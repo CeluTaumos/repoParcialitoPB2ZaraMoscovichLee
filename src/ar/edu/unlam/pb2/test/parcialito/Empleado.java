@@ -15,7 +15,7 @@ public abstract class Empleado {
 	public LocalDate fnac;
 	public Departamento departamento;
 	public Credencial credencial;
-	public Double sueldo;
+	public Double sueldoInicial;
 
 	// CONSTRUCTOR
 	public Empleado(String nombre, String apellido, Long CUIL, Long legajo, LocalDate fingreso, LocalDate fnac,
@@ -29,10 +29,7 @@ public abstract class Empleado {
 		this.fnac = fnac;
 		this.departamento = departamento;
 		this.credencial = credencial;
-<<<<<<< HEAD
-=======
-		this.sueldo = sueldo;
->>>>>>> 42de5254427984c1944c3fbc02b6918934601984
+		this.sueldoInicial = 0.0;
 
 	}
 
@@ -60,7 +57,6 @@ public abstract class Empleado {
 		this.departamento = departamento;
 	}
 
-<<<<<<< HEAD
 	String getNombre() {
 		return nombre;
 	}
@@ -99,14 +95,15 @@ public abstract class Empleado {
 
 	void setCredencial(Credencial credencial) {
 		this.credencial = credencial;
-=======
-	public Double getSaldo() {
-		return sueldo;
 	}
 
-	public void setSaldo(Double saldo) {
-		this.sueldo = saldo;
->>>>>>> 42de5254427984c1944c3fbc02b6918934601984
+	public Double getSueldo() {
+		return sueldoInicial;
+	}
+
+	public void getSueldo(Double saldo) {
+		this.sueldoInicial = saldo;
+
 	}
 
 	@Override

@@ -67,6 +67,14 @@ public class Empresa {
 		return this.listaEmpleados.remove(efec1);
 		
 	}
+	
+	public Double depositarSueldo(Empleado efec1, Double importeADepositar) {
+		
+		Double saldo = efec1.getSueldo();
+		
+		return saldo+=importeADepositar;
+		
+	}
 
 //	public Empleado buscarPorCuil(Long cUIL) {
 //
