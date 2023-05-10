@@ -6,14 +6,6 @@ import java.time.LocalDate;
 
 import org.junit.Test;
 
-import ar.edu.unlam.pb2.Contratado;
-import ar.edu.unlam.pb2.Credencial;
-import ar.edu.unlam.pb2.Departamento;
-import ar.edu.unlam.pb2.Efectivo;
-import ar.edu.unlam.pb2.Empleado;
-import ar.edu.unlam.pb2.Empresa;
-import ar.edu.unlam.pb2.ObraSocial;
-import ar.edu.unlam.pb2.TipoCredencial;
 
 public class testEmpresa {
 
@@ -45,7 +37,7 @@ public class testEmpresa {
 		Departamento departamento;
 		Credencial credencial;
 		LocalDate fCaducidad;
-		Contratado contratado;
+		Pasante contratado;
 		Efectivo efec;
 		ObraSocial obraSocial;
 		Long codigoObraSocial;
@@ -58,9 +50,9 @@ public class testEmpresa {
 		fingreso = LocalDate.of(2023, 05, 13);
 		fnac = LocalDate.of(2003, 07, 21);
 		departamento = Departamento.CONTABILIDAD;
-		credencial = new Credencial(5, TipoCredencial.VISITANTE);
+		credencial = new Credencial(5, TipoCredencial.PASANTE);
 		fCaducidad = LocalDate.of(2024, 03, 01);
-		contratado = new Contratado("Micaela", "Zara", 132165465l, 2313153l, fingreso, fnac, departamento, fCaducidad,
+		contratado = new Pasante("Micaela", "Zara", 132165465l, 2313153l, fingreso, fnac, departamento, fCaducidad,
 				credencial);
 		
 		//EJECUCION EFECTIVO
@@ -85,7 +77,7 @@ public class testEmpresa {
 	@Test
 	public void queNoSePuedanAgregarDosEmpleadosEfectivosConElMismoCUIL() {
 
-		// Datos de entrada
+		//DATOS DE ENTRADA
 		String nombre, apellido;
 		Long CUIL;
 		Long legajo;
@@ -110,7 +102,7 @@ public class testEmpresa {
 		Credencial credencial;
 		credencial = new Credencial(5, TipoCredencial.ALLACCESS);
 
-		// Ejecucion
+		//EJECUCION
 
 		// efec 1
 		fIngreso1 = LocalDate.of(2023, 05, 13);
@@ -135,7 +127,7 @@ public class testEmpresa {
 		efec2 = new Efectivo("Cele", "Moscovich", 132165455l, 1655565l, fIngreso2, fNac2, departamento2, obraSocial,
 				credencial);
 
-		// Validacion
+		//VALIDACION
 		assertTrue(empresa.agregarEmpleado(efec1));
 		assertTrue(empresa.agregarEmpleado(efec2));
 		
@@ -145,7 +137,7 @@ public class testEmpresa {
 	@Test
 	public void queNoSePuedanAgregarDosEmpleadosEfectivosConElMismoCUILCaminoNoFeliz() {
 
-		// Datos de entrada
+		//DATOS DE ENTRADA
 		String nombre, apellido;
 		Long CUIL;
 		Long legajo;
@@ -170,16 +162,16 @@ public class testEmpresa {
 		Credencial credencial;
 		credencial = new Credencial(5, TipoCredencial.ALLACCESS);
 
-		// Ejecucion
+		//EJECUCION
 
-		// efec 1
+		//EFECT 1
 		fIngreso1 = LocalDate.of(2023, 05, 13);
 		fNac1 = LocalDate.of(2003, 07, 21);
 		departamento1 = Departamento.CONTABILIDAD;
 		codigoObraSocial = 165165l;
 		nombreObraSocial = "Osde";
 
-		// efec2
+		//EFECT 2
 		fIngreso2 = LocalDate.of(2022, 03, 15);
 		fNac2 = LocalDate.of(2004, 06, 15);
 		departamento2 = Departamento.RECURSOS_HUMANOS;
@@ -194,31 +186,30 @@ public class testEmpresa {
 		efec2 = new Efectivo("Cele", "Moscovich", 132165465l, 1653165l, fIngreso2, fNac2, departamento2, obraSocial,
 				credencial);
 
-		// Validacion
+		//VALIDACION
 		assertTrue(empresa.agregarEmpleado(efec1));
 		assertFalse(empresa.agregarEmpleado(efec2));
 
 	}
 	@Test
-	public void queNoSePuedanAgregarDosEmpleadosContratadosConElMismoCUILCaminoFeliz() {
+	public void queNoSePuedanAgregarDosEmpleadosPasantesConElMismoCUILCaminoFeliz() {
 
-		// Datos de entrada
+		//DATOS DE ENTRADA
 		String nombre, apellido;
 		Long CUIL;
 		Long legajo;
 		LocalDate fIngreso1;
 		LocalDate fNac1;
-		Empleado mica;
 		Departamento departamento1;
 
-		Contratado mari;
+		Pasante mari;
 		LocalDate fCaducidad1;
 
 		LocalDate fIngreso2;
 		LocalDate fNac2;
 		Departamento departamento2;
 		LocalDate fCaducidad2;
-		Contratado andy;
+		Pasante andy;
 
 		Empresa empresa;
 		String nombreEmpresa;
@@ -226,7 +217,7 @@ public class testEmpresa {
 		Credencial credencial;
 		credencial = new Credencial(5, TipoCredencial.RESIDENTE);
 
-		// Ejecucion
+		//EJECUCION
 		fIngreso1 = LocalDate.of(2023, 05, 13);
 		fNac1 = LocalDate.of(2003, 07, 21);
 		departamento1 = Departamento.CONTABILIDAD;
@@ -237,24 +228,24 @@ public class testEmpresa {
 		departamento2 = Departamento.RECURSOS_HUMANOS;
 		fCaducidad2 = LocalDate.of(2024, 06, 06);
 
-		mari = new Contratado("Mari", "Lee", 132165465l, 2313153l, fIngreso1, fNac1, departamento1, fCaducidad1,
+		mari = new Pasante("Mari", "Lee", 132165465l, 2313153l, fIngreso1, fNac1, departamento1, fCaducidad1,
 				credencial);
 		//CUIL DIF
-		andy = new Contratado("Andy", "Borgeat", 132185465l, 2373153l, fIngreso2, fNac2, departamento2, fCaducidad2,
+		andy = new Pasante("Andy", "Borgeat", 132185465l, 2373153l, fIngreso2, fNac2, departamento2, fCaducidad2,
 				credencial);
 
 		nombreEmpresa = "X";
 		empresa = new Empresa(nombreEmpresa);
 
-		// Validacion
+		//VALIDACION 
 		assertTrue(empresa.agregarEmpleado(mari));
 		assertTrue(empresa.agregarEmpleado(andy));
 
 	}
 	@Test
-	public void queNoSePuedanAgregarDosEmpleadosContratadosConElMismoCUILCaminoTriste() {
+	public void queNoSePuedanAgregarDosEmpleadosPasantesConElMismoCUILCaminoTriste() {
 
-		// Datos de entrada
+		//DATOS DE ENTRADA
 		String nombre, apellido;
 		Long CUIL;
 		Long legajo;
@@ -263,14 +254,14 @@ public class testEmpresa {
 		Empleado mica;
 		Departamento departamento1;
 
-		Contratado mari;
+		Pasante mari;
 		LocalDate fCaducidad1;
 
 		LocalDate fIngreso2;
 		LocalDate fNac2;
 		Departamento departamento2;
 		LocalDate fCaducidad2;
-		Contratado andy;
+		Pasante andy;
 
 		Empresa empresa;
 		String nombreEmpresa;
@@ -278,7 +269,7 @@ public class testEmpresa {
 		Credencial credencial;
 		credencial = new Credencial(5, TipoCredencial.RESIDENTE);
 
-		// Ejecucion
+		//EJECUCION
 		fIngreso1 = LocalDate.of(2023, 05, 13);
 		fNac1 = LocalDate.of(2003, 07, 21);
 		departamento1 = Departamento.CONTABILIDAD;
@@ -289,15 +280,15 @@ public class testEmpresa {
 		departamento2 = Departamento.RECURSOS_HUMANOS;
 		fCaducidad2 = LocalDate.of(2024, 06, 06);
 
-		mari = new Contratado("Mari", "Lee", 132165465l, 2313153l, fIngreso1, fNac1, departamento1, fCaducidad1,
+		mari = new Pasante("Mari", "Lee", 132165465l, 2313153l, fIngreso1, fNac1, departamento1, fCaducidad1,
 				credencial);
-		andy = new Contratado("Andy", "Borgeat", 132165465l, 2313153l, fIngreso2, fNac2, departamento2, fCaducidad2,
+		andy = new Pasante("Andy", "Borgeat", 132165465l, 2313153l, fIngreso2, fNac2, departamento2, fCaducidad2,
 				credencial);
 
 		nombreEmpresa = "X";
 		empresa = new Empresa(nombreEmpresa);
 
-		// Validacion
+		//VALIDACION
 		assertTrue(empresa.agregarEmpleado(mari));
 		assertFalse(empresa.agregarEmpleado(andy));
 
