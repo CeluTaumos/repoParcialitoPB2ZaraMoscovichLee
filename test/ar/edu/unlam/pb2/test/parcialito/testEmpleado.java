@@ -58,6 +58,7 @@ contratado = new Contratado("Micaela", "Zara", 132165465l, 2313153l, fIngreso, f
 
 assertNotNull(contratado);
 
+
  
 
     }
