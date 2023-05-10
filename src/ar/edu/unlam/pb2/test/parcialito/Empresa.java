@@ -1,7 +1,7 @@
 package ar.edu.unlam.pb2.test.parcialito;
 
 import java.util.HashSet;
-
+import java.util.Iterator;
 
 public class Empresa {
 
@@ -19,7 +19,8 @@ public class Empresa {
 	public String getNombre() {
 		return nombre;
 	}
-    public void setNombre(String nombre) {
+
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
@@ -30,14 +31,39 @@ public class Empresa {
 	public void setListaEmpleados(HashSet<Empleado> listaEmpleados) {
 		this.listaEmpleados = listaEmpleados;
 	}
+
 	public Integer getCantListaEmpleados() {
 		return listaEmpleados.size();
 	}
 
 	public Boolean agregarEmpleado(Empleado empleado) {
 		return this.listaEmpleados.add(empleado);
-		
+
+	}
+
+	public Integer filtrarCantidadDePasantes() {
+		Integer cantidad = 0;
+
+		for (Empleado empleado : listaEmpleados) {
+			if (empleado instanceof Pasante) {
+				cantidad++;
+			}
+		}
+		return cantidad;
+	}
+
+	public Integer filtrarCantidadDeEfectivos() {
+		Integer cantidad = 0;
+
+		for (Empleado empleado : listaEmpleados) {
+			if (empleado instanceof Efectivo) {
+				cantidad++;
+			}
+		}
+		return cantidad;
 	}
 
 
-	}
+
+}
+

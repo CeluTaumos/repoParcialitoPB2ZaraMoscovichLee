@@ -9,7 +9,7 @@ import org.junit.Test;
 public class testEmpleado {
 
 	@Test
-	public void queSePuedaCrearUnEmpleadoDeTipoContratado() {
+	public void queSePuedaCrearUnEmpleadoDeTipoPasante() {
 
 		// DATOS DE ENTRADA
 		String nombre, apellido;
@@ -21,21 +21,21 @@ public class testEmpleado {
 		Departamento departamento;
 		Credencial credencial;
 		LocalDate fCaducidad;
-		Contratado contratado;
+		Pasante pasante;
 
 		// EJECUCION
 		fingreso = LocalDate.of(2023, 05, 13);
 		fnac = LocalDate.of(2003, 07, 21);
 		departamento = Departamento.CONTABILIDAD;
-		credencial = new Credencial(5, TipoCredencial.VISITANTE);
+		credencial = new Credencial(5, TipoCredencial.PASANTE);
 
 		fCaducidad = LocalDate.of(2024, 03, 01);
 
-		contratado = new Contratado("Micaela", "Zara", 132165465l, 2313153l, fingreso, fnac, departamento, fCaducidad,
+		pasante = new Pasante("Micaela", "Zara", 132165465l, 2313153l, fingreso, fnac, departamento, fCaducidad,
 				credencial);
 
 		// Validacion
-		assertNotNull(contratado);
+		assertNotNull(pasante);
 
 	}
 
@@ -118,6 +118,7 @@ public class testEmpleado {
 		assertNotNull(obraSocial);
 
 	}
+	
 	
 	
 
