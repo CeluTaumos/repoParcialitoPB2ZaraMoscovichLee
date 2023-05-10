@@ -13,4 +13,10 @@ public class Efectivo extends Empleado {
 
 	}
 
+	@Override
+	public boolean abrirPuerta(Puerta puerta, Credencial credencial) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
