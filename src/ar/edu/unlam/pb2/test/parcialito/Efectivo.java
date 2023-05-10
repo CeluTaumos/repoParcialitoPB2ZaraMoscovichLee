@@ -1,6 +1,7 @@
 package ar.edu.unlam.pb2.test.parcialito;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Efectivo extends Empleado {
 
@@ -15,8 +16,20 @@ public class Efectivo extends Empleado {
 
 	@Override
 	public boolean abrirPuerta(Puerta puerta, Credencial credencial) {
-		// TODO Auto-generated method stub
-		return false;
+		// La puerta se abre si el tipo coincide con el tipo de la credencial
+
+				Boolean seAbrio = false;
+				LocalDateTime fechaIngreso= LocalDateTime.now();
+				if (puerta.meAbroConCredencial(credencial)) {
+					credencial.guardarAcceso(seAbrio, puerta, fechaIngreso);
+					seAbrio = true;
+				}
+				else {
+					seAbrio=false;
+				}
+
+				return seAbrio;
+		
 	}
 
 }

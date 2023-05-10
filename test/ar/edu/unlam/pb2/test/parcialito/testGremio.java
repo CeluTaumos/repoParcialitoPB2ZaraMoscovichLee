@@ -20,10 +20,10 @@ public class testGremio {
 		assertNotNull(gremio);
 
 	}
-	
-	@Test 
+
+	@Test
 	public void queSePuedaAgregarUnaAgremiadoAUnGremio() {
-			
+
 		// DATOS DE ENTRADA
 		String nombre, apellido;
 		Long CUIL;
@@ -33,6 +33,7 @@ public class testGremio {
 		Empleado mica;
 		Departamento departamento;
 		Credencial credencial;
+		Double sueldo;
 
 		Efectivo efec;
 		ObraSocial obraSocial;
@@ -59,14 +60,15 @@ public class testGremio {
 		departamento = Departamento.VENTAS;
 		// EL AGREMIADO
 		zara = new Agremiado(nombreObraSocial, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
-				credencial);
-		
+				credencial, 2000000.0);
+
 		assertTrue(gremio.agregarAgremiado(zara));
 		
 		
 		
-		
+
 	}
+	
 	
 
 }

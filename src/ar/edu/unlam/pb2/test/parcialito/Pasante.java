@@ -1,6 +1,7 @@
 package ar.edu.unlam.pb2.test.parcialito;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Pasante extends Empleado {
 
@@ -22,8 +23,14 @@ public class Pasante extends Empleado {
 
 	@Override
 	public boolean abrirPuerta(Puerta puerta, Credencial credencial) {
-		// TODO Auto-generated method stub
-		return false;
+		Boolean seAbrio = false;
+		LocalDateTime fechaIngreso= LocalDateTime.now();
+		if (puerta.meAbroConCredencial(credencial))
+			credencial.guardarAcceso(seAbrio, puerta, fechaIngreso);
+			seAbrio = true;
+		
+
+		return seAbrio;
 	}
 
 
