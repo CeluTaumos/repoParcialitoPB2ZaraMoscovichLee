@@ -17,24 +17,11 @@ public class testEmpleado {
 		Long legajo;
 		LocalDate fingreso;
 		LocalDate fnac;
+		Empleado mica;
 		Departamento departamento;
 		Credencial credencial;
-
-<<<<<<< HEAD
-	//DATOS DE ENTRADA
-	 String nombre, apellido;
-	 Long CUIL;
-	 Long legajo;
-	 LocalDate fIngreso;
-	 LocalDate fNac;
-	 Empleado mica;
-	 Departamento departamento;
-	 Credencial credencial;
-	 Contratado contratado;
-	 LocalDate fCaducidad;
-=======
-		Contratado contratado;
 		LocalDate fCaducidad;
+		Contratado contratado;
 
 		// EJECUCION
 		fingreso = LocalDate.of(2023, 05, 13);
@@ -50,64 +37,7 @@ public class testEmpleado {
 		// Validacion
 		assertNotNull(contratado);
 
-<<<<<<< HEAD
 	}
-=======
-Empleado mica;
-
-Departamento departamento;
-
-Credencial credencial;
->>>>>>> 38464a7d05beb239f1a4be25d8d308b4f6ac78f8
-
-
-
-	//EJECUCION
-	
-	fIngreso = LocalDate.of(2023, 05, 13);
-	fNac = LocalDate.of(2003, 07, 21);
-	departamento = Departamento.CONTABILIDAD;
-	credencial = new Credencial(5, TipoCredencial.VISITANTE);
-	fCaducidad = LocalDate.of(2024, 03, 01);
-	contratado = new Contratado("Micaela", "Zara", 132165465l, 2313153l, fIngreso, fNac, departamento, fCaducidad, credencial);
-
-<<<<<<< HEAD
-	
-	//VALIDACION
-	
-	assertNotNull(contratado);
-=======
- LocalDate fCaducidad;
-
-
-
-//EJECUCION
-
-fIngreso = LocalDate.of(2023, 05, 13);
-
-fNac = LocalDate.of(2003, 07, 21);
-
- departamento = Departamento.CONTABILIDAD;
- credencial = new Credencial(5, TipoCredencial.VISITANTE);
-
-
-fCaducidad = LocalDate.of(2024, 03, 01);
-
-
-
-contratado = new Contratado("Micaela", "Zara", 132165465l, 2313153l, fIngreso, fNac, departamento, fCaducidad, credencial);
-
-
-//VALIDACION
-
-assertNotNull(contratado);
-
-
- 
->>>>>>> 38464a7d05beb239f1a4be25d8d308b4f6ac78f8
-
-    }
->>>>>>> refs/remotes/origin/main
 
 	@Test
 	public void queSePuedaCrearUnEmpleadoTipoEfectivo() {
@@ -142,8 +72,6 @@ assertNotNull(contratado);
 		assertNotNull(efec);
 		assertNotNull(obraSocial);
 	}
-
-
 
 	@Test
 	public void queSePuedaCrearUnAgremiadoDeTipoEfectivo() {
@@ -190,5 +118,7 @@ assertNotNull(contratado);
 		assertNotNull(obraSocial);
 
 	}
+	
+	
 
 }
