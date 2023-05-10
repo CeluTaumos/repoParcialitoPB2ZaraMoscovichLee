@@ -12,6 +12,14 @@ public class Pasante extends Empleado {
 		this.fCaducidad = fCaducidad;
 	}
 
+	public LocalDate getfCaducidad() {
+		return fCaducidad;
+	}
+
+	public void setfCaducidad(LocalDate fCaducidad) {
+		this.fCaducidad = fCaducidad;
+	}
+
 	@Override
 	public boolean abrirPuerta(Puerta puerta, Credencial credencial) {
 		// TODO Auto-generated method stub
