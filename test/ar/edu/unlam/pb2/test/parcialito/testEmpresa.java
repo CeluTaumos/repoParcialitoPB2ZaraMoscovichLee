@@ -351,6 +351,65 @@ public class testEmpresa {
 		
 		
 	}
+	@Test
+	public void queNoSePuedanCrearDosEmpleadosAgremiadosConElMismoCUILCaminoTriste() {
+		// DATOS DE ENTRADA
+		String nombre, apellido,nombre2,apellido2;
+		Long CUIL,CUIL2;
+		Long legajo,legajo2;
+		LocalDate fingreso;
+		LocalDate fnac,fnac2;
+		Departamento departamento;
+		Credencial credencial;
+
+		Efectivo efec,efec2;
+		ObraSocial obraSocial;
+		Long codigoObraSocial;
+		String nombreObraSocial;
+		
+
+		Empresa empresa;
+		String nombreEmpresa;
+
+		// EL AGREMIADO PERTENECE A UN GREMIO
+		Gremio gremio;
+		Agremiado zara;
+		Agremiado deLosCampos;
+
+		credencial = new Credencial(5, TipoCredencial.ALLACCESS);
+
+		// Ejecucion
+		nombre = "Bella";
+		nombre2= "Fealina";
+		apellido = "Zara";
+		apellido2 = "De los Campos";
+		legajo = 5l;
+		legajo2=2l;
+		CUIL = 45L;
+		//MISMO CUIL
+		CUIL2=45L;
+		codigoObraSocial = 165165l;
+		nombreObraSocial = "Osde";
+		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
+		gremio = new Gremio(TipoDeGremio.MERCANTIL, "BPr");
+		fingreso = LocalDate.of(2023, 05, 13);
+		fnac = LocalDate.of(2003, 07, 21);
+		fnac2 = LocalDate.of(2002, 02, 21);
+		departamento = Departamento.VENTAS;
+
+		nombreEmpresa = "X";
+		empresa = new Empresa(nombreEmpresa);
+		
+		// EL AGREMIADO
+		zara = new Agremiado(nombreObraSocial, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
+				credencial);
+		deLosCampos= new Agremiado (nombreObraSocial,apellido2,CUIL2,legajo2, fingreso,fnac2,departamento,obraSocial,gremio,credencial);
+       //VALIDACION
+		assertTrue(empresa.agregarEmpleado(deLosCampos));
+		assertFalse(empresa.agregarEmpleado(zara));
+		
+		
+	}
 	
 	
 
