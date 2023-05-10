@@ -34,6 +34,7 @@ public class testEmpresa {
 		Empleado mica;
 		Departamento departamento;
 		Credencial credencial;
+		Double sueldo;
 		LocalDate fCaducidad;
 		Pasante contratado;
 		Efectivo efec;
@@ -51,7 +52,7 @@ public class testEmpresa {
 		credencial = new Credencial(5, TipoCredencial.PASANTE);
 		fCaducidad = LocalDate.of(2024, 03, 01);
 		contratado = new Pasante("Micaela", "Zara", 132165465l, 2313153l, fingreso, fnac, departamento, fCaducidad,
-				credencial);
+				credencial, 20000.0);
 
 		// EJECUCION EFECTIVO
 		fingreso = LocalDate.of(2023, 05, 13);
@@ -63,7 +64,7 @@ public class testEmpresa {
 
 		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
 		efec = new Efectivo("Celu", "Rojas", 132165465l, 2313153l, fingreso, fnac, departamento, obraSocial,
-				credencial);
+				credencial, 20000.0);
 
 		// AGREGO LOS EMPLEADOS A LA EMPRESA Y VEO QUE SE AGREGARON
 		assertTrue(empresa.agregarEmpleado(efec));
@@ -83,6 +84,7 @@ public class testEmpresa {
 		LocalDate fNac1;
 		Empleado mica;
 		Departamento departamento1;
+		Double sueldo;
 
 		Efectivo efec1;
 		Efectivo efec2;
@@ -120,10 +122,10 @@ public class testEmpresa {
 		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
 
 		efec1 = new Efectivo("Micaela", "Zara", 132165465l, 2313153l, fIngreso1, fNac1, departamento1, obraSocial,
-				credencial);
+				credencial, 20000.0);
 		// CUIL DIF
 		efec2 = new Efectivo("Cele", "Moscovich", 132165455l, 1655565l, fIngreso2, fNac2, departamento2, obraSocial,
-				credencial);
+				credencial, 20000.0);
 
 		// VALIDACION
 		assertTrue(empresa.agregarEmpleado(efec1));
@@ -142,6 +144,7 @@ public class testEmpresa {
 		LocalDate fNac1;
 		Empleado mica;
 		Departamento departamento1;
+		Double sueldo;
 
 		Efectivo efec1;
 		Efectivo efec2;
@@ -179,9 +182,9 @@ public class testEmpresa {
 		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
 
 		efec1 = new Efectivo("Micaela", "Zara", 132165465l, 2313153l, fIngreso1, fNac1, departamento1, obraSocial,
-				credencial);
+				credencial, 20000.0);
 		efec2 = new Efectivo("Cele", "Moscovich", 132165465l, 1653165l, fIngreso2, fNac2, departamento2, obraSocial,
-				credencial);
+				credencial, 20000.0);
 
 		// VALIDACION
 		assertTrue(empresa.agregarEmpleado(efec1));
@@ -199,6 +202,7 @@ public class testEmpresa {
 		LocalDate fIngreso1;
 		LocalDate fNac1;
 		Departamento departamento1;
+		Double sueldo;
 
 		Pasante mari;
 		LocalDate fCaducidad1;
@@ -227,10 +231,10 @@ public class testEmpresa {
 		fCaducidad2 = LocalDate.of(2024, 06, 06);
 
 		mari = new Pasante("Mari", "Lee", 132165465l, 2313153l, fIngreso1, fNac1, departamento1, fCaducidad1,
-				credencial);
+				credencial, 200000.0);
 		// CUIL DIF
 		andy = new Pasante("Andy", "Borgeat", 132185465l, 2373153l, fIngreso2, fNac2, departamento2, fCaducidad2,
-				credencial);
+				credencial, 200000.0);
 
 		nombreEmpresa = "X";
 		empresa = new Empresa(nombreEmpresa);
@@ -248,6 +252,7 @@ public class testEmpresa {
 		String nombre, apellido;
 		Long CUIL;
 		Long legajo;
+		Double sueldo;
 		LocalDate fIngreso1;
 		LocalDate fNac1;
 		Empleado mica;
@@ -280,9 +285,9 @@ public class testEmpresa {
 		fCaducidad2 = LocalDate.of(2024, 06, 06);
 
 		mari = new Pasante("Mari", "Lee", 132165465l, 2313153l, fIngreso1, fNac1, departamento1, fCaducidad1,
-				credencial);
+				credencial, 200000.0);
 		andy = new Pasante("Andy", "Borgeat", 132165465l, 2313153l, fIngreso2, fNac2, departamento2, fCaducidad2,
-				credencial);
+				credencial, 2000000.0);
 
 		nombreEmpresa = "X";
 		empresa = new Empresa(nombreEmpresa);
@@ -303,6 +308,7 @@ public class testEmpresa {
 		LocalDate fnac, fnac2;
 		Departamento departamento;
 		Credencial credencial;
+		Double sueldo;
 
 		Efectivo efec, efec2;
 		ObraSocial obraSocial;
@@ -342,10 +348,16 @@ public class testEmpresa {
 
 		// EL AGREMIADO
 		zara = new Agremiado(nombreObraSocial, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
+<<<<<<< HEAD
 				credencial);
 		deLosCampos = new Agremiado(nombreObraSocial, apellido2, CUIL2, legajo2, fingreso, fnac2, departamento,
 				obraSocial, gremio, credencial);
 		// VALIDACION
+=======
+				credencial, 200000.0);
+		deLosCampos= new Agremiado (nombreObraSocial,apellido2,CUIL2,legajo2, fingreso,fnac2,departamento,obraSocial,gremio,credencial, 20000.0);
+       //VALIDACION
+>>>>>>> 42de5254427984c1944c3fbc02b6918934601984
 		assertTrue(empresa.agregarEmpleado(deLosCampos));
 		assertTrue(empresa.agregarEmpleado(zara));
 
@@ -361,6 +373,7 @@ public class testEmpresa {
 		LocalDate fnac, fnac2;
 		Departamento departamento;
 		Credencial credencial;
+		Double sueldo;
 
 		Efectivo efec, efec2;
 		ObraSocial obraSocial;
@@ -401,10 +414,16 @@ public class testEmpresa {
 
 		// EL AGREMIADO
 		zara = new Agremiado(nombreObraSocial, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
+<<<<<<< HEAD
 				credencial);
 		deLosCampos = new Agremiado(nombreObraSocial, apellido2, CUIL2, legajo2, fingreso, fnac2, departamento,
 				obraSocial, gremio, credencial);
 		// VALIDACION
+=======
+				credencial,200000.0);
+		deLosCampos= new Agremiado (nombreObraSocial,apellido2,CUIL2,legajo2, fingreso,fnac2,departamento,obraSocial,gremio,credencial, 200000.0);
+       //VALIDACION
+>>>>>>> 42de5254427984c1944c3fbc02b6918934601984
 		assertTrue(empresa.agregarEmpleado(deLosCampos));
 		assertFalse(empresa.agregarEmpleado(zara));
 
@@ -422,6 +441,7 @@ public class testEmpresa {
 		LocalDate fIngreso1, fIngreso2;
 		LocalDate fNac1, fNac2;
 		Departamento departamento1, departamento2;
+		Double sueldo;
 		Pasante mari;
 		LocalDate fCaducidad1, fCaducidad2;
 		Pasante celu;
@@ -442,9 +462,9 @@ public class testEmpresa {
 		departamento2 = Departamento.RECURSOS_HUMANOS;
 		fCaducidad2 = LocalDate.of(2024, 06, 06);
 		mari = new Pasante("Mari", "Lee", 132165465l, 2313153l, fIngreso1, fNac1, departamento1, fCaducidad1,
-				credencial);
+				credencial, 2020192.0);
 		celu = new Pasante("Celena", "Chu", 111111111l, 2313153l, fIngreso2, fNac2, departamento2, fCaducidad2,
-				credencial);
+				credencial, 2000000.0);
 		nombreEmpresa = "X";
 		empresa = new Empresa(nombreEmpresa);
 		empresa.agregarEmpleado(mari);
@@ -466,6 +486,7 @@ public class testEmpresa {
 		LocalDate fNac1, fNac2;
 		Empleado mica;
 		Departamento departamento1, departamento2;
+		Double sueldo;
 
 		Efectivo efec1, efec2;
 		ObraSocial obraSocial;
@@ -499,9 +520,9 @@ public class testEmpresa {
 		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
 
 		efec1 = new Efectivo("Micaela", "Zara", 132165465l, 2313153l, fIngreso1, fNac1, departamento1, obraSocial,
-				credencial);
+				credencial, 2000000.0);
 		efec2 = new Efectivo("Cele", "Moscovich", 222222222l, 1653165l, fIngreso2, fNac2, departamento2, obraSocial,
-				credencial);
+				credencial, 200000.0);
 
 		empresa.agregarEmpleado(efec1);
 		empresa.agregarEmpleado(efec2);

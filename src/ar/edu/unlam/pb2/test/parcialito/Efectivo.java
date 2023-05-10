@@ -7,8 +7,8 @@ public class Efectivo extends Empleado {
 	private ObraSocial obraSocial;
 
 	public Efectivo(String nombre, String apellido, Long CUIL, Long legajo, LocalDate fingreso, LocalDate fnac,
-			Departamento departamento, ObraSocial obraSocial, Credencial credencial) {
-		super(nombre, apellido, CUIL, legajo, fingreso, fnac, departamento, credencial);
+			Departamento departamento, ObraSocial obraSocial, Credencial credencial, Double sueldo) {
+		super(nombre, apellido, CUIL, legajo, fingreso, fnac, departamento, credencial, sueldo);
 		this.obraSocial = obraSocial;
 
 	}
