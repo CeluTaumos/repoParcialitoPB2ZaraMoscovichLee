@@ -10,8 +10,8 @@ public class Agremiado extends Efectivo {
 		// CONSTRUCTOR
 
 		public Agremiado(String nombre, String apellido, Long CUIL, Long legajo, LocalDate fingreso, LocalDate fnac,
-				Departamento departamento, ObraSocial obraSocial, Gremio gremio, Credencial credencial) {
-			super(nombre, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, credencial);
+				Departamento departamento, ObraSocial obraSocial, Gremio gremio, Credencial credencial, Double sueldo) {
+			super(nombre, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, credencial, sueldo);
 
 			this.gremio = gremio;
 		}

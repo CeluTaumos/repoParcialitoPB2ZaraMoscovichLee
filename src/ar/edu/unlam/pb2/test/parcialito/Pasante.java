@@ -7,8 +7,8 @@ public class Pasante extends Empleado {
 	private LocalDate fCaducidad;
 
 	public Pasante(String nombre, String apellido, Long CUIL, Long legajo, LocalDate fingreso, LocalDate fnac,
-			Departamento departamento, LocalDate fCaducidad, Credencial credencial) {
-		super(nombre, apellido, CUIL, legajo, fingreso, fnac, departamento, credencial);
+			Departamento departamento, LocalDate fCaducidad, Credencial credencial, Double sueldo) {
+		super(nombre, apellido, CUIL, legajo, fingreso, fnac, departamento, credencial, sueldo);
 		this.fCaducidad = fCaducidad;
 	}
 

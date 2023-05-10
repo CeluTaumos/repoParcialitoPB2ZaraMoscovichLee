@@ -21,6 +21,7 @@ public class testEmpleado {
 		Departamento departamento;
 		Credencial credencial;
 		LocalDate fCaducidad;
+		Double sueldo;
 		Pasante pasante;
 
 		// EJECUCION
@@ -32,7 +33,7 @@ public class testEmpleado {
 		fCaducidad = LocalDate.of(2024, 03, 01);
 
 		pasante = new Pasante("Micaela", "Zara", 132165465l, 2313153l, fingreso, fnac, departamento, fCaducidad,
-				credencial);
+				credencial, 12341.0);
 
 		// Validacion
 		assertNotNull(pasante);
@@ -49,7 +50,9 @@ public class testEmpleado {
 		LocalDate fnac;
 		Empleado mica;
 		Departamento departamento;
+		Double sueldo;
 		Credencial credencial;
+
 
 		Efectivo efec;
 		ObraSocial obraSocial;
@@ -66,7 +69,7 @@ public class testEmpleado {
 
 		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
 		efec = new Efectivo("Micaela", "Zara", 132165465l, 2313153l, fingreso, fnac, departamento, obraSocial,
-				credencial);
+				credencial,2354165.0);
 
 		// Validacion
 		assertNotNull(efec);
@@ -84,6 +87,7 @@ public class testEmpleado {
 		LocalDate fnac;
 		Empleado mica;
 		Departamento departamento;
+		Double sueldo;
 		Credencial credencial;
 
 		Efectivo efec;
@@ -111,7 +115,7 @@ public class testEmpleado {
 		departamento = Departamento.VENTAS;
 		// EL AGREMIADO
 		zara = new Agremiado(nombreObraSocial, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
-				credencial);
+				credencial, 20000.0);
 
 		// Validacion
 		assertNotNull(zara);
