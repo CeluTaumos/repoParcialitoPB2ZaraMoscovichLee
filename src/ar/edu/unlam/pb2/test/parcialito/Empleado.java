@@ -1,10 +1,11 @@
 package ar.edu.unlam.pb2.test.parcialito;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
-public abstract  class Empleado {
-	
-	//ATRIBUTOS DE CLASE
+public abstract class Empleado {
+
+	// ATRIBUTOS DE CLASE
 	public String nombre;
 	public String apellido;
 	public Long CUIL;
@@ -14,27 +15,69 @@ public abstract  class Empleado {
 	public Departamento departamento;
 	public Credencial credencial;
 
-	//CONSTRUCTOR
+	// CONSTRUCTOR
 	public Empleado(String nombre, String apellido, Long CUIL, Long legajo, LocalDate fingreso, LocalDate fnac,
-	Departamento departamento,Credencial credencial) {
+			Departamento departamento, Credencial credencial) {
 
+		this.nombre = nombre;
+
+		this.apellido = apellido;
+
+		this.CUIL = CUIL;
+
+		this.legajo = legajo;
+
+		this.fingreso = fingreso;
+
+		this.fnac = fnac;
+
+		this.departamento = departamento;
+
+		this.credencial = credencial;
+
+	}
 	
 
-	this.nombre = nombre;
+	LocalDate getFingreso() {
+		return fingreso;
+	}
 
-	this.apellido = apellido;
+	void setFingreso(LocalDate fingreso) {
+		this.fingreso = fingreso;
+	}
 
-	this.CUIL = CUIL;
+	LocalDate getFnac() {
+		return fnac;
+	}
 
-	this.legajo = legajo;
+	void setFnac(LocalDate fnac) {
+		this.fnac = fnac;
+	}
 
-	this.fingreso = fingreso;
+	Departamento getDepartamento() {
+		return departamento;
+	}
 
-	this.fnac = fnac;
+	void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
 
-	this.departamento = departamento;
+	@Override
+	public int hashCode() {
+		return Objects.hash(CUIL);
+	}
 
-	this.credencial=credencial;
-
-}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Empleado other = (Empleado) obj;
+		return Objects.equals(CUIL, other.CUIL);
+	}
+	
+	public abstract boolean abrirPuerta(Puerta puerta, Credencial credencial);
 }
