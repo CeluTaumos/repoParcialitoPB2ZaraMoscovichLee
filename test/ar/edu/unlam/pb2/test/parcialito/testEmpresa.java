@@ -296,19 +296,18 @@ public class testEmpresa {
 	@Test
 	public void queNoSePuedanCrearDosEmpleadosAgremiadosConElMismoCUIL() {
 		// DATOS DE ENTRADA
-		String nombre, apellido,nombre2,apellido2;
-		Long CUIL,CUIL2;
-		Long legajo,legajo2;
+		String nombre, apellido, nombre2, apellido2;
+		Long CUIL, CUIL2;
+		Long legajo, legajo2;
 		LocalDate fingreso;
-		LocalDate fnac,fnac2;
+		LocalDate fnac, fnac2;
 		Departamento departamento;
 		Credencial credencial;
 
-		Efectivo efec,efec2;
+		Efectivo efec, efec2;
 		ObraSocial obraSocial;
 		Long codigoObraSocial;
 		String nombreObraSocial;
-		
 
 		Empresa empresa;
 		String nombreEmpresa;
@@ -322,13 +321,13 @@ public class testEmpresa {
 
 		// Ejecucion
 		nombre = "Bella";
-		nombre2= "Fealina";
+		nombre2 = "Fealina";
 		apellido = "Zara";
 		apellido2 = "De los Campos";
 		legajo = 5l;
-		legajo2=2l;
+		legajo2 = 2l;
 		CUIL = 45L;
-		CUIL2=5L;
+		CUIL2 = 5L;
 		codigoObraSocial = 165165l;
 		nombreObraSocial = "Osde";
 		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
@@ -340,33 +339,33 @@ public class testEmpresa {
 
 		nombreEmpresa = "X";
 		empresa = new Empresa(nombreEmpresa);
-		
+
 		// EL AGREMIADO
 		zara = new Agremiado(nombreObraSocial, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
 				credencial);
-		deLosCampos= new Agremiado (nombreObraSocial,apellido2,CUIL2,legajo2, fingreso,fnac2,departamento,obraSocial,gremio,credencial);
-       //VALIDACION
+		deLosCampos = new Agremiado(nombreObraSocial, apellido2, CUIL2, legajo2, fingreso, fnac2, departamento,
+				obraSocial, gremio, credencial);
+		// VALIDACION
 		assertTrue(empresa.agregarEmpleado(deLosCampos));
 		assertTrue(empresa.agregarEmpleado(zara));
-		
-		
+
 	}
+
 	@Test
 	public void queNoSePuedanCrearDosEmpleadosAgremiadosConElMismoCUILCaminoTriste() {
 		// DATOS DE ENTRADA
-		String nombre, apellido,nombre2,apellido2;
-		Long CUIL,CUIL2;
-		Long legajo,legajo2;
+		String nombre, apellido, nombre2, apellido2;
+		Long CUIL, CUIL2;
+		Long legajo, legajo2;
 		LocalDate fingreso;
-		LocalDate fnac,fnac2;
+		LocalDate fnac, fnac2;
 		Departamento departamento;
 		Credencial credencial;
 
-		Efectivo efec,efec2;
+		Efectivo efec, efec2;
 		ObraSocial obraSocial;
 		Long codigoObraSocial;
 		String nombreObraSocial;
-		
 
 		Empresa empresa;
 		String nombreEmpresa;
@@ -380,14 +379,14 @@ public class testEmpresa {
 
 		// Ejecucion
 		nombre = "Bella";
-		nombre2= "Fealina";
+		nombre2 = "Fealina";
 		apellido = "Zara";
 		apellido2 = "De los Campos";
 		legajo = 5l;
-		legajo2=2l;
+		legajo2 = 2l;
 		CUIL = 45L;
-		//MISMO CUIL
-		CUIL2=45L;
+		// MISMO CUIL
+		CUIL2 = 45L;
 		codigoObraSocial = 165165l;
 		nombreObraSocial = "Osde";
 		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
@@ -399,19 +398,17 @@ public class testEmpresa {
 
 		nombreEmpresa = "X";
 		empresa = new Empresa(nombreEmpresa);
-		
+
 		// EL AGREMIADO
 		zara = new Agremiado(nombreObraSocial, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
 				credencial);
-		deLosCampos= new Agremiado (nombreObraSocial,apellido2,CUIL2,legajo2, fingreso,fnac2,departamento,obraSocial,gremio,credencial);
-       //VALIDACION
+		deLosCampos = new Agremiado(nombreObraSocial, apellido2, CUIL2, legajo2, fingreso, fnac2, departamento,
+				obraSocial, gremio, credencial);
+		// VALIDACION
 		assertTrue(empresa.agregarEmpleado(deLosCampos));
 		assertFalse(empresa.agregarEmpleado(zara));
-		
-		
+
 	}
-	
-	
 
 	// METODOS FILTRAR EMPLEADOS POR TIPO,CANTIDAD,LISTAR
 
@@ -514,5 +511,122 @@ public class testEmpresa {
 		assertEquals(CANTIDAD_ESPERADA_EFECTIVOS, empresa.filtrarCantidadDeEfectivos());
 
 	}
+
+	@Test
+	public void queSePuedanDespedirEfectivos() {
+
+		// Datos de entrada
+		String nombre, apellido;
+		Long CUIL;
+		Long legajo;
+		LocalDate fIngreso1, fIngreso2;
+		LocalDate fNac1, fNac2;
+		Empleado mica;
+		Departamento departamento1, departamento2;
+
+		Efectivo efec1, efec2;
+		ObraSocial obraSocial;
+		Long codigoObraSocial;
+		String nombreObraSocial;
+
+		Empresa empresa;
+		String nombreEmpresa;
+		Integer CANTIDAD_ESPERADA_EFECTIVOS = 2;
+
+		Credencial credencial;
+		credencial = new Credencial(5, TipoCredencial.ALLACCESS);
+
+		Integer CANTIDAD_ESPERADA_DESPEDIDOS = 1;
+
+		// EJECUCION
+
+		// EFEC 1
+		fIngreso1 = LocalDate.of(2023, 05, 13);
+		fNac1 = LocalDate.of(2003, 07, 21);
+		departamento1 = Departamento.CONTABILIDAD;
+		codigoObraSocial = 165165l;
+		nombreObraSocial = "Osde";
+
+		// EFEC2
+		fIngreso2 = LocalDate.of(2022, 03, 15);
+		fNac2 = LocalDate.of(2004, 06, 15);
+		departamento2 = Departamento.RECURSOS_HUMANOS;
+
+		nombreEmpresa = "X";
+		empresa = new Empresa(nombreEmpresa);
+
+		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
+
+		efec1 = new Efectivo("Micaela", "Zara", 132165465l, 2313153l, fIngreso1, fNac1, departamento1, obraSocial,
+				credencial);
+		efec2 = new Efectivo("Cele", "Moscovich", 222222222l, 1653165l, fIngreso2, fNac2, departamento2, obraSocial,
+				credencial);
+
+		empresa.agregarEmpleado(efec1);
+		empresa.agregarEmpleado(efec2);
+
+		// VALIDACION
+
+		assertEquals(CANTIDAD_ESPERADA_EFECTIVOS, empresa.filtrarCantidadDeEfectivos());
+		assertTrue(empresa.despedir(efec1));
+		assertEquals(CANTIDAD_ESPERADA_DESPEDIDOS, empresa.filtrarCantidadDeEfectivos());
+	}
+
+//	@Test
+//	public void queSePuedaBuscarUnEmpleadoPorCUIL() {
+//
+//		// Datos de entrada
+//		String nombre, apellido;
+//		Long CUIL;
+//		Long legajo;
+//		LocalDate fIngreso1, fIngreso2;
+//		LocalDate fNac1, fNac2;
+//		Empleado mica;
+//		Departamento departamento1, departamento2;
+//
+//		Efectivo efec1, efec2;
+//		ObraSocial obraSocial;
+//		Long codigoObraSocial;
+//		String nombreObraSocial;
+//
+//		Empresa empresa;
+//		String nombreEmpresa;
+//		Integer CANTIDAD_ESPERADA_EFECTIVOS = 2;
+//
+//		Credencial credencial;
+//		credencial = new Credencial(5, TipoCredencial.ALLACCESS);
+//
+//		// EJECUCION
+//
+//		// EFEC 1
+//		fIngreso1 = LocalDate.of(2023, 05, 13);
+//		fNac1 = LocalDate.of(2003, 07, 21);
+//		departamento1 = Departamento.CONTABILIDAD;
+//		codigoObraSocial = 165165l;
+//		nombreObraSocial = "Osde";
+//		CUIL = 132165465l;
+//
+//		// EFEC2
+//		fIngreso2 = LocalDate.of(2022, 03, 15);
+//		fNac2 = LocalDate.of(2004, 06, 15);
+//		departamento2 = Departamento.RECURSOS_HUMANOS;
+//
+//		nombreEmpresa = "X";
+//		empresa = new Empresa(nombreEmpresa);
+//
+//		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
+//
+//		efec1 = new Efectivo("Micaela", "Zara", CUIL, 2313153l, fIngreso1, fNac1, departamento1, obraSocial,
+//				credencial);
+//		efec2 = new Efectivo("Cele", "Moscovich", 222222222l, 1653165l, fIngreso2, fNac2, departamento2, obraSocial,
+//				credencial);
+//
+//		empresa.agregarEmpleado(efec1);
+//		empresa.agregarEmpleado(efec2);
+//
+//		// VALIDACION
+//		assertNotNull(empresa.buscarPorCuil(CUIL));
+//
+//	}
 
 }

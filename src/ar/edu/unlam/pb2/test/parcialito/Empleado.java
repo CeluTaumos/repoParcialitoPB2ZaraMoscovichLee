@@ -3,10 +3,9 @@ package ar.edu.unlam.pb2.test.parcialito;
 import java.time.LocalDate;
 import java.util.Objects;
 
+public abstract class Empleado {
 
-public abstract  class Empleado {
-	
-	//ATRIBUTOS DE CLASE PADRE
+	// ATRIBUTOS DE CLASE PADRE
 
 	public String nombre;
 	public String apellido;
@@ -21,18 +20,16 @@ public abstract  class Empleado {
 	public Empleado(String nombre, String apellido, Long CUIL, Long legajo, LocalDate fingreso, LocalDate fnac,
 			Departamento departamento, Credencial credencial) {
 
-
-	this.nombre = nombre;
-	this.apellido = apellido;
-	this.CUIL = CUIL;
-	this.legajo = legajo;
-	this.fingreso = fingreso;
-	this.fnac = fnac;
-	this.departamento = departamento;
-	this.credencial=credencial;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.CUIL = CUIL;
+		this.legajo = legajo;
+		this.fingreso = fingreso;
+		this.fnac = fnac;
+		this.departamento = departamento;
+		this.credencial = credencial;
 
 	}
-	
 
 	LocalDate getFingreso() {
 		return fingreso;
@@ -58,11 +55,50 @@ public abstract  class Empleado {
 		this.departamento = departamento;
 	}
 
+	String getNombre() {
+		return nombre;
+	}
+
+	void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	String getApellido() {
+		return apellido;
+	}
+
+	void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	Long getCUIL() {
+		return CUIL;
+	}
+
+	void setCUIL(Long cUIL) {
+		CUIL = cUIL;
+	}
+
+	Long getLegajo() {
+		return legajo;
+	}
+
+	void setLegajo(Long legajo) {
+		this.legajo = legajo;
+	}
+
+	Credencial getCredencial() {
+		return credencial;
+	}
+
+	void setCredencial(Credencial credencial) {
+		this.credencial = credencial;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(CUIL);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -75,7 +111,6 @@ public abstract  class Empleado {
 		Empleado other = (Empleado) obj;
 		return Objects.equals(CUIL, other.CUIL);
 	}
-	
+
 	public abstract boolean abrirPuerta(Puerta puerta, Credencial credencial);
 }
-

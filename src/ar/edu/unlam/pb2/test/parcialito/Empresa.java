@@ -63,7 +63,26 @@ public class Empresa {
 		return cantidad;
 	}
 
+	public Boolean despedir(Efectivo efec1) {
+		return this.listaEmpleados.remove(efec1);
+		
+	}
 
+//	public Empleado buscarPorCuil(Long cUIL) {
+//
+//		Empleado encontrado = null;
+//		encontrado.setCUIL(cUIL);
+//
+//		for (int i = 0; i < this.listaEmpleados.size(); i++) {
+//			if (this.listaEmpleados.contains(encontrado)) {
+//				return encontrado;
+//			} else {
+//				encontrado = null;
+//			}
+//
+//		}
+//		return encontrado;
+//
+//	}
 
 }
-
