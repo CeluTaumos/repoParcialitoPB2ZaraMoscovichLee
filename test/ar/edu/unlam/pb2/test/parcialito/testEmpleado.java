@@ -9,9 +9,18 @@ import org.junit.Test;
 public class testEmpleado {
 
 	@Test
-	public void queSePuedacCrearUnEmpleadoDeTipoContratado() {
+	public void queSePuedaCrearUnEmpleadoDeTipoContratado() {
 
+		// DATOS DE ENTRADA
+		String nombre, apellido;
+		Long CUIL;
+		Long legajo;
+		LocalDate fingreso;
+		LocalDate fnac;
+		Departamento departamento;
+		Credencial credencial;
 
+<<<<<<< HEAD
 	//DATOS DE ENTRADA
 	 String nombre, apellido;
 	 Long CUIL;
@@ -23,6 +32,33 @@ public class testEmpleado {
 	 Credencial credencial;
 	 Contratado contratado;
 	 LocalDate fCaducidad;
+=======
+		Contratado contratado;
+		LocalDate fCaducidad;
+
+		// EJECUCION
+		fingreso = LocalDate.of(2023, 05, 13);
+		fnac = LocalDate.of(2003, 07, 21);
+		departamento = Departamento.CONTABILIDAD;
+		credencial = new Credencial(5, TipoCredencial.VISITANTE);
+
+		fCaducidad = LocalDate.of(2024, 03, 01);
+
+		contratado = new Contratado("Micaela", "Zara", 132165465l, 2313153l, fingreso, fnac, departamento, fCaducidad,
+				credencial);
+
+		// Validacion
+		assertNotNull(contratado);
+
+<<<<<<< HEAD
+	}
+=======
+Empleado mica;
+
+Departamento departamento;
+
+Credencial credencial;
+>>>>>>> 38464a7d05beb239f1a4be25d8d308b4f6ac78f8
 
 
 
@@ -35,16 +71,47 @@ public class testEmpleado {
 	fCaducidad = LocalDate.of(2024, 03, 01);
 	contratado = new Contratado("Micaela", "Zara", 132165465l, 2313153l, fIngreso, fNac, departamento, fCaducidad, credencial);
 
+<<<<<<< HEAD
 	
 	//VALIDACION
 	
 	assertNotNull(contratado);
+=======
+ LocalDate fCaducidad;
+
+
+
+//EJECUCION
+
+fIngreso = LocalDate.of(2023, 05, 13);
+
+fNac = LocalDate.of(2003, 07, 21);
+
+ departamento = Departamento.CONTABILIDAD;
+ credencial = new Credencial(5, TipoCredencial.VISITANTE);
+
+
+fCaducidad = LocalDate.of(2024, 03, 01);
+
+
+
+contratado = new Contratado("Micaela", "Zara", 132165465l, 2313153l, fIngreso, fNac, departamento, fCaducidad, credencial);
+
+
+//VALIDACION
+
+assertNotNull(contratado);
+
+
+ 
+>>>>>>> 38464a7d05beb239f1a4be25d8d308b4f6ac78f8
 
     }
+>>>>>>> refs/remotes/origin/main
 
 	@Test
 	public void queSePuedaCrearUnEmpleadoTipoEfectivo() {
-		// Datos de entrada
+		// DATOS DE ENTRADA
 		String nombre, apellido;
 		Long CUIL;
 		Long legajo;
@@ -75,4 +142,53 @@ public class testEmpleado {
 		assertNotNull(efec);
 		assertNotNull(obraSocial);
 	}
+
+
+
+	@Test
+	public void queSePuedaCrearUnAgremiadoDeTipoEfectivo() {
+
+		// DATOS DE ENTRADA
+		String nombre, apellido;
+		Long CUIL;
+		Long legajo;
+		LocalDate fingreso;
+		LocalDate fnac;
+		Empleado mica;
+		Departamento departamento;
+		Credencial credencial;
+
+		Efectivo efec;
+		ObraSocial obraSocial;
+		Long codigoObraSocial;
+		String nombreObraSocial;
+
+		// EL AGREMIADO PERTENECE A UN GREMIO
+		Gremio gremio;
+		Agremiado zara;
+
+		credencial = new Credencial(5, TipoCredencial.ALLACCESS);
+
+		// Ejecucion
+		nombre = "Bella";
+		apellido = "De La Rosa";
+		legajo = 5l;
+		CUIL = 45L;
+		codigoObraSocial = 165165l;
+		nombreObraSocial = "Osde";
+		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
+		gremio = new Gremio(TipoDeGremio.MERCANTIL, "BPr");
+		fingreso = LocalDate.of(2023, 05, 13);
+		fnac = LocalDate.of(2003, 07, 21);
+		departamento = Departamento.VENTAS;
+		// EL AGREMIADO
+		zara = new Agremiado(nombreObraSocial, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
+				credencial);
+
+		// Validacion
+		assertNotNull(zara);
+		assertNotNull(obraSocial);
+
+	}
+
 }
