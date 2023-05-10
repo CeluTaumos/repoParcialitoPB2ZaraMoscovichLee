@@ -61,5 +61,38 @@ assertNotNull(contratado);
  
 
     }
-}
 
+	@Test
+	public void queSePuedaCrearUnEmpleadoTipoEfectivo() {
+		// Datos de entrada
+		String nombre, apellido;
+		Long CUIL;
+		Long legajo;
+		LocalDate fingreso;
+		LocalDate fnac;
+		Empleado mica;
+		Departamento departamento;
+		Credencial credencial;
+
+		Efectivo efec;
+		ObraSocial obraSocial;
+		Long codigoObraSocial;
+		String nombreObraSocial;
+
+		// Ejecucion
+		fingreso = LocalDate.of(2023, 05, 13);
+		fnac = LocalDate.of(2003, 07, 21);
+		departamento = Departamento.CONTABILIDAD;
+		credencial = new Credencial(5, TipoCredencial.ALLACCESS);
+		codigoObraSocial = 165165l;
+		nombreObraSocial = "Osde";
+
+		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
+		efec = new Efectivo("Micaela", "Zara", 132165465l, 2313153l, fingreso, fnac, departamento, obraSocial,
+				credencial);
+
+		// Validacion
+		assertNotNull(efec);
+		assertNotNull(obraSocial);
+	}
+}
