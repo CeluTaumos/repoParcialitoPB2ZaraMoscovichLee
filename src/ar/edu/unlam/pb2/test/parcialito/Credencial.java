@@ -46,6 +46,10 @@ public class Credencial {
 		this.bloqueada = bloqueada;
 	}
 
+	public Boolean desbloquear() {
+		return this.bloqueada = false;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
