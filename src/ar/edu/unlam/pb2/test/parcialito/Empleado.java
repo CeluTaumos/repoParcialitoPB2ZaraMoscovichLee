@@ -124,4 +124,6 @@ public abstract class Empleado {
 	}
 
 	public abstract boolean abrirPuerta(Puerta puerta, Credencial credencial);
+	
+	public abstract Double cobrar(Double sueldo);
 }

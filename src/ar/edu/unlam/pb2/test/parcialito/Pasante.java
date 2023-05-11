@@ -6,11 +6,13 @@ import java.time.LocalDateTime;
 public class Pasante extends Empleado {
 
 	private LocalDate fCaducidad;
+	private Double porcentajeDeDescuento;
 
 	public Pasante(String nombre, String apellido, Long CUIL, Long legajo, LocalDate fingreso, LocalDate fnac,
 			Departamento departamento, LocalDate fCaducidad, Credencial credencial, Double sueldo) {
 		super(nombre, apellido, CUIL, legajo, fingreso, fnac, departamento, credencial, sueldo);
 		this.fCaducidad = fCaducidad;
+		this.porcentajeDeDescuento = 0.20;
 	}
 
 	public LocalDate getfCaducidad() {
@@ -24,18 +26,26 @@ public class Pasante extends Empleado {
 	@Override
 	public boolean abrirPuerta(Puerta puerta, Credencial credencial) {
 		Boolean seAbrio = false;
-		LocalDateTime fechaIngreso= LocalDateTime.now();
+		LocalDateTime fechaIngreso = LocalDateTime.now();
 		if (puerta.meAbroConCredencial(credencial))
 			credencial.guardarAcceso(seAbrio, puerta, fechaIngreso);
-			seAbrio = true;
-		
+		seAbrio = true;
 
 		return seAbrio;
 	}
 
+	@Override
 
+	public Double cobrar(Double sueldo) {
 
-	
+		Double porcentajeDescuento = sueldo * this.porcentajeDeDescuento;
+
+		Double sueldoConDescuento = sueldo - porcentajeDescuento;
+
+		Double sueldoFinal = this.sueldoInicial + sueldoConDescuento;
+
+		return sueldoFinal;
+
 	}
 
-
+}

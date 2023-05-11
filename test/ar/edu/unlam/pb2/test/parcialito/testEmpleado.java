@@ -53,7 +53,6 @@ public class testEmpleado {
 		Double sueldo;
 		Credencial credencial;
 
-
 		Efectivo efec;
 		ObraSocial obraSocial;
 		Long codigoObraSocial;
@@ -69,7 +68,7 @@ public class testEmpleado {
 
 		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
 		efec = new Efectivo("Micaela", "Zara", 132165465l, 2313153l, fingreso, fnac, departamento, obraSocial,
-				credencial,2354165.0);
+				credencial, 2354165.0);
 
 		// Validacion
 		assertNotNull(efec);
@@ -122,8 +121,97 @@ public class testEmpleado {
 		assertNotNull(obraSocial);
 
 	}
-	
-	
-	
+
+	@Test
+
+	public void queSePuedaCobrarSiendoEfectivo() {
+
+		LocalDate fingreso;
+
+		LocalDate fnac;
+
+		Departamento departamento;
+
+		Double sueldo;
+
+		Double SUELDO_FINAL_ESPERADO = 30500.0;
+
+		Credencial credencial;
+
+		Efectivo efec;
+
+		Long codigoObraSocial;
+
+		String nombreObraSocial;
+
+		ObraSocial obraSocial;
+
+		// Ejecucion
+
+		fingreso = LocalDate.of(2023, 05, 13);
+
+		fnac = LocalDate.of(2003, 07, 21);
+
+		departamento = Departamento.CONTABILIDAD;
+
+		credencial = new Credencial(5, TipoCredencial.ALLACCESS);
+
+		sueldo = 30000.0;
+
+		codigoObraSocial = 165165l;
+
+		nombreObraSocial = "Osde";
+
+		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
+
+		efec = new Efectivo("Micaela", "Zara", 132165465l, 2313153l, fingreso, fnac, departamento, obraSocial,
+				credencial, sueldo);
+
+		assertEquals(SUELDO_FINAL_ESPERADO, efec.cobrar(sueldo));
+
+	}
+
+	@Test
+
+	public void queSePuedaCobrarSiendoPasante() {
+
+		// DATOS DE ENTRADA
+		LocalDate fingreso;
+
+		LocalDate fnac;
+
+		Departamento departamento;
+
+		Credencial credencial;
+
+		LocalDate fCaducidad;
+
+		Double sueldo;
+
+		Double SUELDO_FINAL_ESPERADO = 16000.0;
+
+		Pasante pasante;
+
+		// EJECUCION
+
+		fingreso = LocalDate.of(2023, 05, 13);
+
+		fnac = LocalDate.of(2003, 07, 21);
+
+		departamento = Departamento.CONTABILIDAD;
+
+		credencial = new Credencial(5, TipoCredencial.PASANTE);
+
+		sueldo = 20000.0;
+
+		fCaducidad = LocalDate.of(2024, 03, 01);
+
+		pasante = new Pasante("Micaela", "Zara", 132165465l, 2313153l, fingreso, fnac, departamento, fCaducidad,
+
+				credencial, sueldo);
+
+		assertEquals(SUELDO_FINAL_ESPERADO, pasante.cobrar(sueldo));
+
+	}
 
 }

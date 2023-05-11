@@ -256,7 +256,6 @@ public class testPuerta {
 		LocalDateTime horaEntrada;
 		Integer CANTIDAD_ACCESOS_ESPERADOS = 3;
 
-		
 		Puerta puertaDeposito;
 		Acceso primerAcceso;
 		Acceso segundoAcceso;
@@ -286,14 +285,14 @@ public class testPuerta {
 				credencial, sueldoInicial);
 
 		zara.abrirPuerta(puertaDeposito, credencial);
-		
+
 		zara.abrirPuerta(puertaDeposito, credencial);
 		zara.abrirPuerta(puertaDeposito, credencial);
-		
 
 		assertFalse(puertaDeposito.verEstado(credencial));
 		assertEquals(CANTIDAD_ACCESOS_ESPERADOS, credencial.getCantidadAccesos());
 
 	}
+
 
 }

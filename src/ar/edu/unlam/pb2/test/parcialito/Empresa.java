@@ -75,6 +75,12 @@ public class Empresa {
 		return saldo+=importeADepositar;
 		
 	}
+	
+//	public Boolean listarEfectivos() {
+//		HashSet <Efectivo> listaEfectivos = new HashSet <Efectivo>(this.getListaEmpleados()) {
+//			
+//		}
+//	}
 
 //	public Empleado buscarPorCuil(Long cUIL) {
 //

@@ -13,7 +13,7 @@ public class Credencial {
 
 	public Credencial(Integer id, TipoCredencial visitante) {
 		this.id = id;
-		this.bloqueada=false;
+		this.bloqueada = false;
 		this.tipoDeCredencial = visitante;
 		this.listaAccesos = new ArrayList<Acceso>();
 	}
@@ -37,8 +37,6 @@ public class Credencial {
 	public Integer getCantidadAccesos() {
 		return listaAccesos.size();
 	}
-	
-	
 
 	public Boolean getBloqueada() {
 		return bloqueada;
@@ -76,12 +74,9 @@ public class Credencial {
 	}
 
 	public boolean bloquear() {
-		
-		return this.bloqueada=true;
-		
-		
+
+		return this.bloqueada = true;
+
 	}
-	
-	
 
 }
