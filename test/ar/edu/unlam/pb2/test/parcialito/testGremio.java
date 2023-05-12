@@ -61,6 +61,56 @@ public class testGremio {
 
 	}
 	@Test
+	public void queSePuedaAgregarDosAgremiadosIgualesAUnGremio() {
+
+		// DATOS DE ENTRADA
+		Long CUIL;
+		Long legajo;
+		LocalDate fingreso;
+		LocalDate fnac;
+		Departamento departamento;
+		Credencial credencial;
+		ObraSocial obraSocial;
+		Long codigoObraSocial;
+		String nombreObraSocial;
+
+		// EL AGREMIADO PERTENECE A UN GREMIO
+		Gremio gremio;
+		Agremiado agremiado;
+		Agremiado agremiadoDos;
+		Integer CANTIDAD_ESPERADA_AGREMIADOS;
+		Integer CANTIDAD_ACTUAL_AGREMIADOS;
+
+		credencial = new Credencial(5, TipoCredencial.ALLACCESS);
+
+		// Ejecucion
+		legajo = 5l;
+		CUIL = 45L;
+		codigoObraSocial = 165165l;
+		nombreObraSocial = "Osde";
+		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
+		gremio = new Gremio(TipoDeGremio.MERCANTIL, "BPr");
+		fingreso = LocalDate.of(2023, 05, 13);
+		fnac = LocalDate.of(2003, 07, 21);
+		departamento = Departamento.VENTAS;
+		CANTIDAD_ESPERADA_AGREMIADOS=1;
+		// EL AGREMIADO
+		agremiado = new Agremiado("Marisol", "Gomez", CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
+				credencial, 2000000.0);
+		gremio.agregarAgremiado(agremiado);
+		agremiadoDos = new Agremiado("Marisol", "Gomez", CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
+				credencial, 2000000.0);
+		gremio.agregarAgremiado(agremiadoDos);
+
+		CANTIDAD_ACTUAL_AGREMIADOS=gremio.getListaAgremiados().size();
+		
+		assertEquals(CANTIDAD_ESPERADA_AGREMIADOS,CANTIDAD_ACTUAL_AGREMIADOS);
+		
+		
+		
+
+	}
+	@Test
 	public void queSePuedaVerTodosLosAgremiadosDeUnGremio() {
 
 		// DATOS DE ENTRADA
