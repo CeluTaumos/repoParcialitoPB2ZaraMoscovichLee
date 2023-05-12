@@ -16,6 +16,7 @@ public abstract class Empleado {
 	public Departamento departamento;
 	public Credencial credencial;
 	public Double sueldoInicial;
+	public Double sueldo;
 
 	// CONSTRUCTOR
 	public Empleado(String nombre, String apellido, Long CUIL, Long legajo, LocalDate fingreso, LocalDate fnac,
@@ -30,6 +31,7 @@ public abstract class Empleado {
 		this.departamento = departamento;
 		this.credencial = credencial;
 		this.sueldoInicial = 0.0;
+		this.sueldo = sueldo;
 
 	}
 
@@ -97,13 +99,16 @@ public abstract class Empleado {
 		this.credencial = credencial;
 	}
 
-	public Double getSueldo() {
+	public Double getSueldoInicial() {
 		return sueldoInicial;
 	}
 
-	public void getSueldo(Double saldo) {
-		this.sueldoInicial = saldo;
+	Double getSueldo() {
+		return sueldo;
+	}
 
+	void setSueldo(Double sueldo) {
+		this.sueldo = sueldo;
 	}
 
 	@Override
@@ -122,10 +127,10 @@ public abstract class Empleado {
 		Empleado other = (Empleado) obj;
 		return Objects.equals(CUIL, other.CUIL);
 	}
-	
-	//METODO ABSTRACTO
+
+	// METODO ABSTRACTO
 
 	public abstract boolean abrirPuerta(Puerta puerta, Credencial credencial);
-	
+
 	public abstract Double cobrar(Double sueldo);
 }

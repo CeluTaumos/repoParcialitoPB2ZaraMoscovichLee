@@ -112,9 +112,10 @@ public class testEmpleado {
 		fingreso = LocalDate.of(2023, 05, 13);
 		fnac = LocalDate.of(2003, 07, 21);
 		departamento = Departamento.VENTAS;
+		sueldo = 200000.0;
 		// EL AGREMIADO
-		zara = new Agremiado(nombreObraSocial, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
-				credencial, 20000.0);
+		zara = new Agremiado(nombre, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
+				credencial, sueldo);
 
 		// Validacion
 		assertNotNull(zara);
@@ -124,7 +125,7 @@ public class testEmpleado {
 
 	@Test
 
-	public void queSePuedaCobrarSiendoEfectivo() {
+	public void queSePuedaCobrarSiendoEfectivoSinBono() {
 
 		LocalDate fingreso;
 
@@ -134,7 +135,7 @@ public class testEmpleado {
 
 		Double sueldo;
 
-		Double SUELDO_FINAL_ESPERADO = 30500.0;
+		Double SUELDO_FINAL_ESPERADO = 300000.0;
 
 		Credencial credencial;
 
@@ -146,6 +147,10 @@ public class testEmpleado {
 
 		ObraSocial obraSocial;
 
+		Empresa empresa;
+
+		Puerta puertaEntrada;
+
 		// Ejecucion
 
 		fingreso = LocalDate.of(2023, 05, 13);
@@ -156,7 +161,7 @@ public class testEmpleado {
 
 		credencial = new Credencial(5, TipoCredencial.ALLACCESS);
 
-		sueldo = 30000.0;
+		sueldo = 300000.0;
 
 		codigoObraSocial = 165165l;
 
@@ -166,6 +171,14 @@ public class testEmpleado {
 
 		efec = new Efectivo("Micaela", "Zara", 132165465l, 2313153l, fingreso, fnac, departamento, obraSocial,
 				credencial, sueldo);
+
+		empresa = new Empresa("X");
+
+		puertaEntrada = new Puerta(13513, TipoDePuerta.ENTRADA);
+
+		efec.abrirPuerta(puertaEntrada, credencial);
+
+		empresa.depositarSueldo(efec, sueldo);
 
 		assertEquals(SUELDO_FINAL_ESPERADO, efec.cobrar(sueldo));
 
@@ -188,7 +201,7 @@ public class testEmpleado {
 
 		Double sueldo;
 
-		Double SUELDO_FINAL_ESPERADO = 16000.0;
+		Double SUELDO_FINAL_ESPERADO = 160000.0;
 
 		Pasante pasante;
 
@@ -202,7 +215,7 @@ public class testEmpleado {
 
 		credencial = new Credencial(5, TipoCredencial.PASANTE);
 
-		sueldo = 20000.0;
+		sueldo = 200000.0;
 
 		fCaducidad = LocalDate.of(2024, 03, 01);
 
@@ -211,6 +224,70 @@ public class testEmpleado {
 				credencial, sueldo);
 
 		assertEquals(SUELDO_FINAL_ESPERADO, pasante.cobrar(sueldo));
+	}
+
+	@Test
+	public void queSePuedaCobrarSiendoEfectivoConBono() {
+
+		LocalDate fingreso;
+
+		LocalDate fnac;
+
+		Departamento departamento;
+
+		Double sueldo;
+
+		Credencial credencial;
+
+		Efectivo efec;
+
+		Long codigoObraSocial;
+
+		String nombreObraSocial;
+
+		ObraSocial obraSocial;
+
+		Puerta puertaEntrada;
+
+		Double CANTIDAD_ESPERADA_SUELDO = 315000.0;
+
+		Empresa empresa;
+
+		// Ejecucion
+
+		fingreso = LocalDate.of(2023, 05, 13);
+
+		fnac = LocalDate.of(2003, 07, 21);
+
+		departamento = Departamento.CONTABILIDAD;
+
+		credencial = new Credencial(5, TipoCredencial.ALLACCESS);
+
+		sueldo = 300000.0;
+
+		codigoObraSocial = 165165l;
+
+		nombreObraSocial = "Osde";
+
+		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
+
+		efec = new Efectivo("Micaela", "Zara", 132165465l, 2313153l, fingreso, fnac, departamento, obraSocial,
+				credencial, sueldo);
+
+		puertaEntrada = new Puerta(13513, TipoDePuerta.ENTRADA);
+
+		empresa = new Empresa("x");
+
+		efec.abrirPuerta(puertaEntrada, credencial);
+		efec.abrirPuerta(puertaEntrada, credencial);
+		efec.abrirPuerta(puertaEntrada, credencial);
+		efec.abrirPuerta(puertaEntrada, credencial);
+		efec.abrirPuerta(puertaEntrada, credencial);
+		efec.abrirPuerta(puertaEntrada, credencial);
+
+		empresa.depositarSueldo(efec, sueldo);
+
+		assertEquals(CANTIDAD_ESPERADA_SUELDO, efec.cobrar(sueldo));
 
 	}
 

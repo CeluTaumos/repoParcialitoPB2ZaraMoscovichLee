@@ -12,21 +12,18 @@ public class Credencial {
 	private ArrayList<Acceso> listaAccesos;
 	private ArrayList<Acceso> listaAccesosEnUnDia;
 	private ArrayList<Acceso> listaAccesosFiltradosPorPuerta;
-	
 
 	public Credencial(Integer id, TipoCredencial visitante) {
 		this.id = id;
-<<<<<<< HEAD
 		this.bloqueada = false;
 		this.tipoDeCredencial = visitante;
 		this.listaAccesos = new ArrayList<Acceso>();
-=======
-		this.bloqueada=false;
+		this.bloqueada = false;
 		this.tipoDeCredencial = visitante;
 		this.listaAccesos = new ArrayList<Acceso>();
-		this.listaAccesosFiltradosPorPuerta=new ArrayList<Acceso>();
-		this.listaAccesosEnUnDia= new ArrayList<Acceso>();
->>>>>>> 172fb1a3291c03fe296f030a4765e5357b3d14ff
+		this.listaAccesosFiltradosPorPuerta = new ArrayList<Acceso>();
+		this.listaAccesosEnUnDia = new ArrayList<Acceso>();
+
 	}
 
 	Integer getId() {
@@ -47,16 +44,6 @@ public class Credencial {
 
 	public Integer getCantidadAccesos() {
 		return listaAccesos.size();
-	}
-	
-	
-
-	public Boolean getBloqueada() {
-		return bloqueada;
-	}
-
-	public void setBloqueada(Boolean bloqueada) {
-		this.bloqueada = bloqueada;
 	}
 
 	public Boolean getBloqueada() {
@@ -84,6 +71,22 @@ public class Credencial {
 		this.listaAccesos = listaAccesos;
 	}
 
+	ArrayList<Acceso> getListaAccesosEnUnDia() {
+		return listaAccesosEnUnDia;
+	}
+
+	void setListaAccesosEnUnDia(ArrayList<Acceso> listaAccesosEnUnDia) {
+		this.listaAccesosEnUnDia = listaAccesosEnUnDia;
+	}
+
+	ArrayList<Acceso> getListaAccesosFiltradosPorPuerta() {
+		return listaAccesosFiltradosPorPuerta;
+	}
+
+	void setListaAccesosFiltradosPorPuerta(ArrayList<Acceso> listaAccesosFiltradosPorPuerta) {
+		this.listaAccesosFiltradosPorPuerta = listaAccesosFiltradosPorPuerta;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -99,44 +102,40 @@ public class Credencial {
 		return Objects.equals(id, other.id);
 	}
 
-	public void guardarAcceso(Boolean seAbrio, Puerta puerta, LocalDateTime fechaIngreso) {
+	public boolean guardarAcceso(Boolean seAbrio, Puerta puerta, LocalDateTime fechaIngreso) {
 
 		Acceso accesoReciente = new Acceso(seAbrio, fechaIngreso, puerta);
-		this.listaAccesos.add(accesoReciente);
+		return this.listaAccesos.add(accesoReciente);
 
 	}
 
 	public boolean bloquear() {
-<<<<<<< HEAD
 
 		return this.bloqueada = true;
-=======
-		
-		return this.bloqueada=true;
-		
-		
 	}
-    
-	//PARA FILTRAR ACCESOS DE UN DÍA ESPECÍFICO
-	public Integer  getAccesosDeUnDía(LocalDateTime hoy) {
-		for (Acceso acceso : listaAccesos) {
-			if(acceso.getFecha().equals(hoy))
-				listaAccesosEnUnDia.add(acceso);
-			return listaAccesosEnUnDia.size();
-		}
-		
-		return listaAccesosEnUnDia.size();
-		
-	}
->>>>>>> 172fb1a3291c03fe296f030a4765e5357b3d14ff
 
-	public ArrayList<Acceso>  getListaAccesosFiltradaPorPuerta(Puerta puerta) {
-		for ( Acceso acceso : listaAccesos) {
-			if(acceso.getPuerta().getTipodepuerta().equals(puerta.getTipodepuerta()))
+	// PARA FILTRAR ACCESOS DE UN DÍA ESPECÍFICO
+
+	public Integer getAccesosDeUnDía(LocalDateTime hoy) {
+		for (Acceso acceso : this.listaAccesos) {
+			if (acceso.getFecha().equals(hoy)) {
+				this.listaAccesosEnUnDia.add(acceso);
+
+			return this.listaAccesosEnUnDia.size();
+			}
+		}
+
+		return this.listaAccesosEnUnDia.size();
+
+	}
+
+	public ArrayList<Acceso> getListaAccesosFiltradaPorPuerta(Puerta puerta) {
+		for (Acceso acceso : listaAccesos) {
+			if (acceso.getPuerta().getTipodepuerta().equals(puerta.getTipodepuerta()))
 				listaAccesosFiltradosPorPuerta.add(acceso);
 		}
 		return listaAccesosFiltradosPorPuerta;
-		
+
 	}
 
 }

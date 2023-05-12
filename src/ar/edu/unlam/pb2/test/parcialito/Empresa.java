@@ -70,7 +70,7 @@ public class Empresa {
 	
 	public Double depositarSueldo(Empleado efec1, Double importeADepositar) {
 		
-		Double saldo = efec1.getSueldo();
+		Double saldo = efec1.getSueldoInicial();
 		
 		return saldo+=importeADepositar;
 		

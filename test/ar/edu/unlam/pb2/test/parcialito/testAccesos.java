@@ -57,7 +57,7 @@ public class testAccesos {
 		horaEntrada = LocalDateTime.now();
 
 		// EL AGREMIADO
-		zara = new Agremiado(nombreObraSocial, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
+		zara = new Agremiado(nombre, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
 				credencial, sueldoInicial);
 		zara.abrirPuerta(puertaDeposito, credencial);
 		zara.abrirPuerta(puertaDeEntrada, credencial);
@@ -111,7 +111,7 @@ public class testAccesos {
 		horaEntrada = LocalDateTime.now();
 
 		// EL AGREMIADO
-		zara = new Agremiado(nombreObraSocial, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
+		zara = new Agremiado(nombre, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
 				credencial, sueldoInicial);
 
 		zara.abrirPuerta(puertaDeposito, credencial);
@@ -213,21 +213,15 @@ public class testAccesos {
 		Long codigoObraSocial;
 		String nombreObraSocial;
 		Gremio gremio;
-		Efectivo efectivo;
+		Efectivo agremiado;
 		Credencial credencial;
-		Boolean permiso;
 		Puerta puertaDeEntrada;
 		Puerta puertaDeposito;
-		Acceso tercerAcceso;
-		Acceso cuartoAcceso;
-		Integer codigo;
-		TipoDePuerta tipodepuerta;
-
 		Integer CANTIDAD_ACCESOS_DEL_DIA_ESPERADOS=4;
+		Integer CANTIDAD_ACCESOS_ACTUAL;
 		LocalDateTime hoy;
 		
 		//EJECUCION
-		
 		
 		codigoObraSocial = 165165l;
 		nombreObraSocial = "Osde";
@@ -238,23 +232,22 @@ public class testAccesos {
 		puertaDeEntrada = new Puerta(1234, TipoDePuerta.ENTRADA);
 		puertaDeposito = new Puerta(1256, TipoDePuerta.DEPOSITO);
 		hoy = LocalDateTime.now();
-		
 
 		// EL AGREMIADO
-		efectivo = new Agremiado("Camila", "Nesa", 45l, 33l, fingreso,  LocalDate.of(2003, 07, 21),  Departamento.VENTAS, obraSocial, gremio,
+		agremiado = new Agremiado("Camila", "Nesa", 45l, 33l, fingreso,  LocalDate.of(2003, 07, 21),  Departamento.VENTAS, obraSocial, gremio,
 				credencial, 0.0);
         
 		//EL AGREMIADO USA LA CREDENCIAL CUATRO VECES
-		efectivo.abrirPuerta(puertaDeposito, credencial);
-		efectivo.abrirPuerta(puertaDeEntrada, credencial);
-		efectivo.abrirPuerta(puertaDeposito, credencial);
-		efectivo.abrirPuerta(puertaDeposito, credencial);
+		agremiado.abrirPuerta(puertaDeposito, credencial);
+		agremiado.abrirPuerta(puertaDeEntrada, credencial);
+		agremiado.abrirPuerta(puertaDeposito, credencial);
+		agremiado.abrirPuerta(puertaDeposito, credencial);
 		//CREO UN METODO PARA MANIPULAR LA FECHA Y PROBAR FUNCIONAMIENTO DEL METODO ANTERIOR
-		efectivo.abrirPuertaElDiaSig(puertaDeEntrada,credencial);
-	
-		//EN EL EQUALS INVOCAMOS AL METODO DE OBTENER ACCESO DE UN DIA PERO USAMOS LA FECHA DE LOS ACCESOS
+		agremiado.abrirPuertaElDiaSig(puertaDeEntrada,credencial); // true
 
-		assertEquals(CANTIDAD_ACCESOS_DEL_DIA_ESPERADOS, efectivo.getCredencial().getAccesosDeUnDía(hoy));
+		CANTIDAD_ACCESOS_ACTUAL = agremiado.getCredencial().getAccesosDeUnDía(hoy); 
+		assertEquals(CANTIDAD_ACCESOS_DEL_DIA_ESPERADOS, CANTIDAD_ACCESOS_ACTUAL);
+		
 
 }
 	
