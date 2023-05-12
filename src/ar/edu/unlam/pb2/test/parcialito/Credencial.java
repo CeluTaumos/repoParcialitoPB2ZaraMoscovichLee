@@ -10,12 +10,23 @@ public class Credencial {
 	private Boolean bloqueada;
 	private TipoCredencial tipoDeCredencial;
 	private ArrayList<Acceso> listaAccesos;
+	private ArrayList<Acceso> listaAccesosEnUnDia;
+	private ArrayList<Acceso> listaAccesosFiltradosPorPuerta;
+	
 
 	public Credencial(Integer id, TipoCredencial visitante) {
 		this.id = id;
+<<<<<<< HEAD
 		this.bloqueada = false;
 		this.tipoDeCredencial = visitante;
 		this.listaAccesos = new ArrayList<Acceso>();
+=======
+		this.bloqueada=false;
+		this.tipoDeCredencial = visitante;
+		this.listaAccesos = new ArrayList<Acceso>();
+		this.listaAccesosFiltradosPorPuerta=new ArrayList<Acceso>();
+		this.listaAccesosEnUnDia= new ArrayList<Acceso>();
+>>>>>>> 172fb1a3291c03fe296f030a4765e5357b3d14ff
 	}
 
 	Integer getId() {
@@ -37,6 +48,16 @@ public class Credencial {
 	public Integer getCantidadAccesos() {
 		return listaAccesos.size();
 	}
+	
+	
+
+	public Boolean getBloqueada() {
+		return bloqueada;
+	}
+
+	public void setBloqueada(Boolean bloqueada) {
+		this.bloqueada = bloqueada;
+	}
 
 	public Boolean getBloqueada() {
 		return bloqueada;
@@ -53,6 +74,14 @@ public class Credencial {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+
+	public ArrayList<Acceso> getListaAccesos() {
+		return listaAccesos;
+	}
+
+	protected void setListaAccesos(ArrayList<Acceso> listaAccesos) {
+		this.listaAccesos = listaAccesos;
 	}
 
 	@Override
@@ -78,9 +107,36 @@ public class Credencial {
 	}
 
 	public boolean bloquear() {
+<<<<<<< HEAD
 
 		return this.bloqueada = true;
+=======
+		
+		return this.bloqueada=true;
+		
+		
+	}
+    
+	//PARA FILTRAR ACCESOS DE UN DÍA ESPECÍFICO
+	public Integer  getAccesosDeUnDía(LocalDateTime hoy) {
+		for (Acceso acceso : listaAccesos) {
+			if(acceso.getFecha().equals(hoy))
+				listaAccesosEnUnDia.add(acceso);
+			return listaAccesosEnUnDia.size();
+		}
+		
+		return listaAccesosEnUnDia.size();
+		
+	}
+>>>>>>> 172fb1a3291c03fe296f030a4765e5357b3d14ff
 
+	public ArrayList<Acceso>  getListaAccesosFiltradaPorPuerta(Puerta puerta) {
+		for ( Acceso acceso : listaAccesos) {
+			if(acceso.getPuerta().getTipodepuerta().equals(puerta.getTipodepuerta()))
+				listaAccesosFiltradosPorPuerta.add(acceso);
+		}
+		return listaAccesosFiltradosPorPuerta;
+		
 	}
 
 }

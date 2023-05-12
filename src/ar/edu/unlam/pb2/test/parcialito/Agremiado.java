@@ -24,4 +24,6 @@ public class Agremiado extends Efectivo {
 			this.gremio = gremio;
 		}
 
+		
+
 }
