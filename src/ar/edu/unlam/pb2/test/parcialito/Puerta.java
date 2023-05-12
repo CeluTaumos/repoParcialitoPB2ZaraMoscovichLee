@@ -53,6 +53,8 @@ public class Puerta {
 	
 	// EL METODO QUE NOS DICE SI SE ABRE CON...
 		public boolean meAbroConCredencial(Credencial credencial) {
+			
+			Integer intentosDeBloqueo =3;
 
 			if (credencial.getTipoDeCredencial().equals(TipoCredencial.ALLACCESS)
 					&& tipodepuerta.equals(TipoDePuerta.DEPOSITO) || tipodepuerta.equals(TipoDePuerta.ENTRADA)
@@ -71,9 +73,20 @@ public class Puerta {
 			
 			else {
 				this.compatible=false;
+				intentosDeBloqueo--;
+				
+				if(intentosDeBloqueo==0) {
+					credencial.bloquear();
+				}
 			}
 
 			return compatible;
+		}
+
+		public boolean verEstado(Credencial credencial) {
+			
+		return credencial.getBloqueada();
+			
 		}
 	
 

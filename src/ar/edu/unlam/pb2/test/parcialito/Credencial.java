@@ -4,19 +4,18 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
-
-
-
 public class Credencial {
 
 	private Integer id;
+	private Boolean bloqueada;
 	private TipoCredencial tipoDeCredencial;
 	private ArrayList<Acceso> listaAccesos;
 
 	public Credencial(Integer id, TipoCredencial visitante) {
 		this.id = id;
+		this.bloqueada=false;
 		this.tipoDeCredencial = visitante;
-		this.listaAccesos= new ArrayList<Acceso>();
+		this.listaAccesos = new ArrayList<Acceso>();
 	}
 
 	Integer getId() {
@@ -37,6 +36,16 @@ public class Credencial {
 
 	public Integer getCantidadAccesos() {
 		return listaAccesos.size();
+	}
+	
+	
+
+	public Boolean getBloqueada() {
+		return bloqueada;
+	}
+
+	public void setBloqueada(Boolean bloqueada) {
+		this.bloqueada = bloqueada;
 	}
 
 	@Override
@@ -66,10 +75,11 @@ public class Credencial {
 
 	}
 
-	public boolean add(Acceso acceso) {
-
-		return this.listaAccesos.add(acceso);
-
+	public boolean bloquear() {
+		
+		return this.bloqueada=true;
+		
+		
 	}
 	
 	

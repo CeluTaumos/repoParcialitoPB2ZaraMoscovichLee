@@ -24,12 +24,16 @@ public class Efectivo extends Empleado {
 					credencial.guardarAcceso(seAbrio, puerta, fechaIngreso);
 					seAbrio = true;
 				}
+				
 				else {
 					seAbrio=false;
+					credencial.guardarAcceso(seAbrio, puerta, fechaIngreso);
 				}
 
 				return seAbrio;
 		
 	}
+
+	
 
 }
