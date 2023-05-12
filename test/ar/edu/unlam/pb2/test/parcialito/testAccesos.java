@@ -123,7 +123,7 @@ public class testAccesos {
 	@Test
 	public void queSePuedanObtenerTodosLosAccesosDeUnaCredencial() {
 
-		// Datos de entrada
+		//	datosentrada
 		LocalDate fingreso;
 		ObraSocial obraSocial;
 		Long codigoObraSocial;
@@ -131,20 +131,12 @@ public class testAccesos {
 		Gremio gremio;
 		Agremiado agremiado;
 		Credencial credencial;
-		Boolean permiso;
 		Puerta puertaDeEntrada;
 		Puerta puertaDeposito;
-		Acceso tercerAcceso;
-		Acceso cuartoAcceso;
-		Integer codigo;
-		TipoDePuerta tipodepuerta;
-
 		Integer CANTIDAD_ACCESOS_ESPERADOS = 4;
 		
 		
 		//EJECUCION
-		
-		
 		codigoObraSocial = 165165l;
 		nombreObraSocial = "Osde";
 		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
@@ -153,8 +145,6 @@ public class testAccesos {
 		credencial = new Credencial(5, TipoCredencial.PASANTE);
 		puertaDeEntrada = new Puerta(1234, TipoDePuerta.ENTRADA);
 		puertaDeposito = new Puerta(1256, TipoDePuerta.DEPOSITO);
-
-
 		// EL AGREMIADO
 		agremiado = new Agremiado("Camila", "Nesa", 45l, 33l, fingreso,  LocalDate.of(2003, 07, 21),  Departamento.VENTAS, obraSocial, gremio,
 				credencial, 0.0);
@@ -171,11 +161,53 @@ public class testAccesos {
 
 		
 	}
-	
+	@Test
+	public void queSePuedanFiltrarLosAccesosDeUnaCredencialPorTipoDePuerta() {
+
+		// Datos de entrada
+		LocalDate fingreso;
+		ObraSocial obraSocial;
+		Long codigoObraSocial;
+		String nombreObraSocial;
+		Gremio gremio;
+		Agremiado agremiado;
+		Credencial credencial;
+		Boolean permiso;
+		Puerta puertaDeEntrada;
+		Puerta puertaDeposito;
+		Integer CANTIDAD_ACCESOS_ESPERADOS = 3;
+		Integer CANTIDAD_ACCESOS_ACTUAL;
+		
+		
+		//EJECUCION
+		codigoObraSocial = 165165l;
+		nombreObraSocial = "Osde";
+		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
+		gremio = new Gremio(TipoDeGremio.TRANSPORTE, "Transportistas");
+		fingreso = LocalDate.of(2023, 05, 13);
+		credencial = new Credencial(5, TipoCredencial.PASANTE);
+		puertaDeEntrada = new Puerta(1234, TipoDePuerta.ENTRADA);
+		puertaDeposito = new Puerta(1256, TipoDePuerta.DEPOSITO);
+		agremiado = new Agremiado("Camila", "Nesa", 45l, 33l, fingreso,  LocalDate.of(2003, 07, 21),  Departamento.VENTAS, obraSocial, gremio,
+				credencial, 0.0);
+        
+		//EL AGREMAIDO USA LA CREDENCIAL CUATRO VECES
+		agremiado.abrirPuerta(puertaDeposito, credencial);
+		agremiado.abrirPuerta(puertaDeEntrada, credencial);
+		agremiado.abrirPuerta(puertaDeposito, credencial);
+		agremiado.abrirPuerta(puertaDeposito, credencial);
+		//PEDIMOS AL AGREMAIDO SU CREDENCIAL PARA VER CUANTAS VECES USO LA CREDENCIAL
+		CANTIDAD_ACCESOS_ACTUAL=agremiado.getCredencial().getListaAccesosFiltradaPorPuerta(puertaDeposito).size();
+         
+		assertEquals(CANTIDAD_ACCESOS_ESPERADOS, CANTIDAD_ACCESOS_ACTUAL);
+
+		
+	}
+
 	@Test
 	public void queSePuedanFiltrarTodosLosAccesosDeUnaCredencialEnUnDía() {
 
-		// Datos de entrada
+		//DATOS ENTRADA
 		LocalDate fingreso;
 		ObraSocial obraSocial;
 		Long codigoObraSocial;

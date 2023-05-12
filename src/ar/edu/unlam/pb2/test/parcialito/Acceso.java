@@ -16,6 +16,14 @@ public class Acceso {
 
 	}
 
+	public Puerta getPuerta() {
+		return puerta;
+	}
+
+	public void setPuerta(Puerta puerta) {
+		this.puerta = puerta;
+	}
+
 	public boolean isPermiso() {
 		return permiso;
 	}

@@ -61,7 +61,7 @@ public class testGremio {
 
 	}
 	@Test
-	public void queSePuedaAgregarDosAgremiadosIgualesAUnGremio() {
+	public void queNoSePuedaAgregarDosAgremiadosIgualesAUnGremio() {
 
 		// DATOS DE ENTRADA
 		Long CUIL;

@@ -10,13 +10,17 @@ public class Credencial {
 	private Boolean bloqueada;
 	private TipoCredencial tipoDeCredencial;
 	private ArrayList<Acceso> listaAccesos;
-	private ArrayList<Acceso> listaAccesosEnUnDía;
+	private ArrayList<Acceso> listaAccesosEnUnDia;
+	private ArrayList<Acceso> listaAccesosFiltradosPorPuerta;
+	
 
 	public Credencial(Integer id, TipoCredencial visitante) {
 		this.id = id;
 		this.bloqueada=false;
 		this.tipoDeCredencial = visitante;
 		this.listaAccesos = new ArrayList<Acceso>();
+		this.listaAccesosFiltradosPorPuerta=new ArrayList<Acceso>();
+		this.listaAccesosEnUnDia= new ArrayList<Acceso>();
 	}
 
 	Integer getId() {
@@ -95,11 +99,20 @@ public class Credencial {
 	public Integer  getAccesosDeUnDía(LocalDateTime hoy) {
 		for (Acceso acceso : listaAccesos) {
 			if(acceso.getFecha().equals(hoy))
-				listaAccesosEnUnDía.add(acceso);
-			return listaAccesosEnUnDía.size();
+				listaAccesosEnUnDia.add(acceso);
+			return listaAccesosEnUnDia.size();
 		}
 		
-		return listaAccesosEnUnDía.size();
+		return listaAccesosEnUnDia.size();
+		
+	}
+
+	public ArrayList<Acceso>  getListaAccesosFiltradaPorPuerta(Puerta puerta) {
+		for ( Acceso acceso : listaAccesos) {
+			if(acceso.getPuerta().getTipodepuerta().equals(puerta.getTipodepuerta()))
+				listaAccesosFiltradosPorPuerta.add(acceso);
+		}
+		return listaAccesosFiltradosPorPuerta;
 		
 	}
 	
