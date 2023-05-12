@@ -18,19 +18,27 @@ public class Gremio {
 		this.listaAgremiados = new HashSet<Agremiado>();
 	}
 
-	protected TipoDeGremio getTipo() {
+	public TipoDeGremio getTipo() {
 		return tipo;
 	}
 
-	protected void setTipo(TipoDeGremio tipo) {
+	public void setTipo(TipoDeGremio tipo) {
 		this.tipo = tipo;
 	}
 
-	protected String getNombre() {
+	public HashSet<Agremiado> getListaAgremiados() {
+		return listaAgremiados;
+	}
+
+	public void setListaAgremiados(HashSet<Agremiado> listaAgremiados) {
+		this.listaAgremiados = listaAgremiados;
+	}
+
+	public String getNombre() {
 		return nombre;
 	}
 
-	protected void setNombre(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
