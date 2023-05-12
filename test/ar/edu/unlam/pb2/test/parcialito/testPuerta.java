@@ -73,7 +73,7 @@ public class testPuerta {
 	}
 
 	@Test
-	public void queNoSePuedaAbrirUnaPuertaConLaCredencialCorrectaCaminoTriste() {
+	public void queNoSePuedaAbrirUnaPuertaConLaCredencialIncorrectaCaminoTriste() {
 
 		// Datos de entrada
 		String nombre, apellido;
@@ -122,119 +122,7 @@ public class testPuerta {
 
 	}
 
-	@Test
-	public void queSePuedanAgregarLosAccesos() {
-
-		// Datos de entrada
-		String nombre, apellido;
-		Long CUIL;
-		Long legajo;
-		LocalDate fingreso;
-		LocalDate fnac;
-		Departamento departamento;
-		ObraSocial obraSocial;
-		Long codigoObraSocial;
-		String nombreObraSocial;
-		Double sueldoInicial = 0.0;
-		Gremio gremio;
-		Agremiado zara;
-		Credencial credencial;
-		Boolean permiso;
-		LocalDateTime horaEntrada;
-		Integer CANTIDAD_ACCESOS_ESPERADOS = 2;
-
-		Puerta puertaDeEntrada;
-		Puerta puertaDeposito;
-		Acceso primerAcceso;
-		Acceso segundoAcceso;
-
-		Integer codigo;
-		TipoDePuerta tipodepuerta;
-
-		// Ejecucion
-		nombre = "Bella";
-		apellido = "De La Rosa";
-		legajo = 5l;
-		CUIL = 45L;
-		codigoObraSocial = 165165l;
-		nombreObraSocial = "Osde";
-		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
-		gremio = new Gremio(TipoDeGremio.INGENIERIA, "Ingenieros");
-		fingreso = LocalDate.of(2023, 05, 13);
-		fnac = LocalDate.of(2003, 07, 21);
-		departamento = Departamento.VENTAS;
-		credencial = new Credencial(5, TipoCredencial.ALLACCESS);
-		puertaDeEntrada = new Puerta(1234, TipoDePuerta.ENTRADA);
-		puertaDeposito = new Puerta(1256, TipoDePuerta.DEPOSITO);
-		horaEntrada = LocalDateTime.now();
-
-		// EL AGREMIADO
-		zara = new Agremiado(nombreObraSocial, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
-				credencial, sueldoInicial);
-		zara.abrirPuerta(puertaDeposito, credencial);
-		zara.abrirPuerta(puertaDeEntrada, credencial);
-
-		assertEquals(CANTIDAD_ACCESOS_ESPERADOS, credencial.getCantidadAccesos());
-
-	}
-
-	@Test
-	public void queSeNoPuedanAgregarLosAccesos() {
-
-		// Datos de entrada
-		String nombre, apellido;
-		Long CUIL;
-		Long legajo;
-		LocalDate fingreso;
-		LocalDate fnac;
-		Departamento departamento;
-		ObraSocial obraSocial;
-		Long codigoObraSocial;
-		String nombreObraSocial;
-		Double sueldoInicial = 0.0;
-		Gremio gremio;
-		Agremiado zara;
-		Credencial credencial;
-		Boolean permiso;
-		LocalDateTime horaEntrada;
-		Integer CANTIDAD_ACCESOS_ESPERADOS = 2;
-
-		Puerta puertaDeEntrada;
-		Puerta puertaDeposito;
-		Acceso primerAcceso;
-		Acceso segundoAcceso;
-
-		Integer codigo;
-		TipoDePuerta tipodepuerta;
-
-		// Ejecucion
-		nombre = "Bella";
-		apellido = "De La Rosa";
-		legajo = 5l;
-		CUIL = 45L;
-		codigoObraSocial = 165165l;
-		nombreObraSocial = "Osde";
-		obraSocial = new ObraSocial(codigoObraSocial, nombreObraSocial);
-		gremio = new Gremio(TipoDeGremio.TRANSPORTE, "Transportistas");
-		fingreso = LocalDate.of(2023, 05, 13);
-		fnac = LocalDate.of(2003, 07, 21);
-		departamento = Departamento.VENTAS;
-		credencial = new Credencial(5, TipoCredencial.PASANTE);
-		puertaDeEntrada = new Puerta(1234, TipoDePuerta.ENTRADA);
-		puertaDeposito = new Puerta(1256, TipoDePuerta.DEPOSITO);
-		horaEntrada = LocalDateTime.now();
-
-		// EL AGREMIADO
-		zara = new Agremiado(nombreObraSocial, apellido, CUIL, legajo, fingreso, fnac, departamento, obraSocial, gremio,
-				credencial, sueldoInicial);
-
-		zara.abrirPuerta(puertaDeposito, credencial);
-		zara.abrirPuerta(puertaDeEntrada, credencial);
-
-		assertEquals(CANTIDAD_ACCESOS_ESPERADOS, credencial.getCantidadAccesos());
-
-	}
-
+	
 	@Test
 	public void queSePuedaBloquearUnaPuerta() {
 

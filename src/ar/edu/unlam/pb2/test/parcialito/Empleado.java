@@ -122,6 +122,8 @@ public abstract class Empleado {
 		Empleado other = (Empleado) obj;
 		return Objects.equals(CUIL, other.CUIL);
 	}
+	
+	//METODO ABSTRACTO
 
 	public abstract boolean abrirPuerta(Puerta puerta, Credencial credencial);
 }

@@ -10,6 +10,7 @@ public class Credencial {
 	private Boolean bloqueada;
 	private TipoCredencial tipoDeCredencial;
 	private ArrayList<Acceso> listaAccesos;
+	private ArrayList<Acceso> listaAccesosEnUnDía;
 
 	public Credencial(Integer id, TipoCredencial visitante) {
 		this.id = id;
@@ -53,6 +54,14 @@ public class Credencial {
 		return Objects.hash(id);
 	}
 
+	public ArrayList<Acceso> getListaAccesos() {
+		return listaAccesos;
+	}
+
+	protected void setListaAccesos(ArrayList<Acceso> listaAccesos) {
+		this.listaAccesos = listaAccesos;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -79,6 +88,18 @@ public class Credencial {
 		
 		return this.bloqueada=true;
 		
+		
+	}
+    
+	//PARA FILTRAR ACCESOS DE UN DÍA ESPECÍFICO
+	public Integer  getAccesosDeUnDía(LocalDateTime hoy) {
+		for (Acceso acceso : listaAccesos) {
+			if(acceso.getFecha().equals(hoy))
+				listaAccesosEnUnDía.add(acceso);
+			return listaAccesosEnUnDía.size();
+		}
+		
+		return listaAccesosEnUnDía.size();
 		
 	}
 	

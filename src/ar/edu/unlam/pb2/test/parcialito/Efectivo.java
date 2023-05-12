@@ -2,6 +2,7 @@ package ar.edu.unlam.pb2.test.parcialito;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class Efectivo extends Empleado {
 
@@ -31,6 +32,26 @@ public class Efectivo extends Empleado {
 				}
 
 				return seAbrio;
+		
+	}
+
+	public Boolean abrirPuertaElDiaSig(Puerta puerta, Credencial credencial) {
+		// La puerta se abre si el tipo coincide con el tipo de la credencial
+
+		Boolean seAbrio = false;
+		LocalDateTime fechaIngreso= LocalDateTime.now();
+		fechaIngreso.plusDays(9);
+		if (puerta.meAbroConCredencial(credencial)) {
+			credencial.guardarAcceso(seAbrio, puerta, fechaIngreso);
+			seAbrio = true;
+		}
+		
+		else {
+			seAbrio=false;
+			credencial.guardarAcceso(seAbrio, puerta, fechaIngreso);
+		}
+
+		return seAbrio;
 		
 	}
 
