@@ -22,6 +22,8 @@ public class testEmpresa {
 
 	// AGREGADO DE EMPLEADOS
 
+	
+	// Mica
 	@Test
 	public void queSePuedaAgregarUnEmpleadoAUnaEmpresa() {
 		// DATOS DE ENTRADA
@@ -133,6 +135,7 @@ public class testEmpresa {
 
 	}
 
+	// Cele
 	@Test
 	public void queNoSePuedanAgregarDosEmpleadosEfectivosConElMismoCUILCaminoNoFeliz() {
 
@@ -245,6 +248,8 @@ public class testEmpresa {
 
 	}
 
+	
+	// Mari
 	@Test
 	public void queNoSePuedanAgregarDosEmpleadosPasantesConElMismoCUILCaminoTriste() {
 
@@ -358,6 +363,7 @@ public class testEmpresa {
 
 	}
 
+	// Cele
 	@Test
 	public void queNoSePuedanCrearDosEmpleadosAgremiadosConElMismoCUILCaminoTriste() {
 		// DATOS DE ENTRADA
@@ -422,7 +428,8 @@ public class testEmpresa {
 	}
 
 	// METODOS FILTRAR EMPLEADOS POR TIPO,CANTIDAD,LISTAR
-
+	
+	// Mari
 	@Test
 	public void queSePuedaFiltrarLaCantidadDePasantes() {
 
@@ -586,6 +593,7 @@ public class testEmpresa {
 		assertEquals(CANTIDAD_ESPERADA_DESPEDIDOS, empresa.filtrarCantidadDeEfectivos());
 	}
 
+	// Cele
 	@Test
 	public void queSePuedaDepositarElSueldo() {
 

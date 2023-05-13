@@ -5,9 +5,11 @@ import static org.junit.Assert.*;
 import java.time.LocalDate;
 
 import org.junit.Test;
+import org.junit.runners.Parameterized.Parameters;
 
 public class testGremio {
 
+	// Mica
 	@Test
 	public void queSePuedaCrearUnGremio() {
 
@@ -20,6 +22,7 @@ public class testGremio {
 
 	}
 
+	// Mari
 	@Test
 	public void queSePuedaAgregarUnAgremiadoAUnGremio() {
 
@@ -60,6 +63,9 @@ public class testGremio {
 		
 
 	}
+	
+	
+	// Cele
 	@Test
 	public void queNoSePuedaAgregarDosAgremiadosIgualesAUnGremio() {
 

@@ -117,15 +117,12 @@ public class Credencial {
 	// PARA FILTRAR ACCESOS DE UN DÍA ESPECÍFICO
 
 	public Integer getAccesosDeUnDía(LocalDateTime hoy) {
-		for (Acceso acceso : this.listaAccesos) {
-			if (acceso.getFecha().equals(hoy)) {
-				this.listaAccesosEnUnDia.add(acceso);
+		for (Acceso acceso : listaAccesos) {
+			if (acceso.getFecha().equals(hoy))
+				listaAccesosEnUnDia.add(acceso);
 
-			return this.listaAccesosEnUnDia.size();
-			}
 		}
-
-		return this.listaAccesosEnUnDia.size();
+		return listaAccesosEnUnDia.size();
 
 	}
 

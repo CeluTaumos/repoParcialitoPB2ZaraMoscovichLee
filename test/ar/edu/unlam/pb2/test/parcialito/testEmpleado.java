@@ -3,10 +3,13 @@ package ar.edu.unlam.pb2.test.parcialito;
 import static org.junit.Assert.*;
 
 import java.time.LocalDate;
+import java.util.Iterator;
 
 import org.junit.Test;
 
 public class testEmpleado {
+	
+	// Mari
 
 	@Test
 	public void queSePuedaCrearUnEmpleadoDeTipoPasante() {
@@ -123,6 +126,7 @@ public class testEmpleado {
 
 	}
 
+	// Mica
 	@Test
 
 	public void queSePuedaCobrarSiendoEfectivoSinBono() {
@@ -201,9 +205,11 @@ public class testEmpleado {
 
 		Double sueldo;
 
-		Double SUELDO_FINAL_ESPERADO = 160000.0;
+		Double SUELDO_FINAL_ESPERADO = 40000.0;
 
 		Pasante pasante;
+
+		Empresa empresa;
 
 		// EJECUCION
 
@@ -222,6 +228,11 @@ public class testEmpleado {
 		pasante = new Pasante("Micaela", "Zara", 132165465l, 2313153l, fingreso, fnac, departamento, fCaducidad,
 
 				credencial, sueldo);
+
+		empresa = new Empresa("X");
+		;
+
+		empresa.depositarSueldo(pasante, sueldo);
 
 		assertEquals(SUELDO_FINAL_ESPERADO, pasante.cobrar(sueldo));
 	}
@@ -278,12 +289,10 @@ public class testEmpleado {
 
 		empresa = new Empresa("x");
 
-		efec.abrirPuerta(puertaEntrada, credencial);
-		efec.abrirPuerta(puertaEntrada, credencial);
-		efec.abrirPuerta(puertaEntrada, credencial);
-		efec.abrirPuerta(puertaEntrada, credencial);
-		efec.abrirPuerta(puertaEntrada, credencial);
-		efec.abrirPuerta(puertaEntrada, credencial);
+		for (int i = 0; i < 21; i++) {
+			efec.abrirPuerta(puertaEntrada, credencial);
+
+		}
 
 		empresa.depositarSueldo(efec, sueldo);
 

@@ -9,6 +9,7 @@ import org.junit.Test;
 
 public class testPuerta {
 
+	// Mica
 	@Test
 	public void queSePuedaCrearUnaPuerta() {
 
@@ -181,6 +182,7 @@ public class testPuerta {
 
 	}
 
+	// Mari
 	@Test
 	public void queSePuedaDesbloquearLaCredencial() {
 		// Datos de entrada
@@ -232,5 +234,4 @@ public class testPuerta {
 		assertFalse(puertaDeposito.verEstado(credencial));
 	}
 
-	
 }

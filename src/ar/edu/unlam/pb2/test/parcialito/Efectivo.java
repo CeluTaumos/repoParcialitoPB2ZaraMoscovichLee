@@ -40,7 +40,7 @@ public class Efectivo extends Empleado {
 	@Override
 	public Double cobrar(Double sueldo) {
 
-		if (horas >= 3) {
+		if (horas >= 20) {
 
 			sueldo += this.bonoMensual;
 

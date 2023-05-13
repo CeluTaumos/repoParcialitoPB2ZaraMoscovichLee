@@ -38,13 +38,9 @@ public class Pasante extends Empleado {
 
 	public Double cobrar(Double sueldo) {
 
-		Double porcentajeDescuento = sueldo * this.porcentajeDeDescuento;
+		Double sueldoConPorcentaje = sueldo * this.porcentajeDeDescuento;
 
-		Double sueldoConDescuento = sueldo - porcentajeDescuento;
-
-		Double sueldoFinal = this.sueldoInicial + sueldoConDescuento;
-
-		return sueldoFinal;
+		return sueldoConPorcentaje;
 
 	}
 
